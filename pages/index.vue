@@ -1,259 +1,16 @@
 <template>
   <nuxt-layout name="home">
     <template #content>
-      <!-- Masonry Cards -->
-      <div class="max-w-6xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-        <!-- Grid -->
-        <div class="grid sm:grid-cols-12 gap-6">
-          <div
-            class="
-              sm:self-end
-              col-span-12
-              sm:col-span-7
-              md:col-span-8
-              lg:col-span-5 lg:col-start-3
-            "
-          >
-            <!-- Card -->
-            <a class="group relative block rounded-xl overflow-hidden" href="#">
-              <div
-                class="
-                  aspect-w-12 aspect-h-7
-                  sm:aspect-none
-                  rounded-xl
-                  overflow-hidden
-                "
-              >
-                <img
-                  class="
-                    group-hover:scale-105
-                    transition-transform
-                    duration-500
-                    ease-in-out
-                    rounded-xl
-                    w-full
-                    object-cover
-                  "
-                  src="https://images.unsplash.com/photo-1606868306217-dbf5046868d2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3481&q=80"
-                  alt="Image Description"
-                />
-              </div>
-              <div class="absolute bottom-0 left-0 right-0 p-2 sm:p-4">
-                <div
-                  class="
-                    text-sm
-                    font-bold
-                    text-gray-800
-                    rounded-lg
-                    bg-white
-                    p-4
-                    md:text-xl
-                    dark:bg-gray-800 dark:text-gray-200
-                  "
-                >
-                  Workplace personalities
-                </div>
-              </div>
-            </a>
-            <!-- End Card -->
-          </div>
-          <!-- End Col -->
-
-          <div
-            class="
-              sm:self-end
-              col-span-12
-              sm:col-span-5
-              md:col-span-4
-              lg:col-span-3
-            "
-          >
-            <!-- Card -->
-            <a class="group relative block rounded-xl overflow-hidden" href="#">
-              <div
-                class="
-                  aspect-w-12 aspect-h-7
-                  sm:aspect-none
-                  rounded-xl
-                  overflow-hidden
-                "
-              >
-                <img
-                  class="
-                    group-hover:scale-105
-                    transition-transform
-                    duration-500
-                    ease-in-out
-                    rounded-xl
-                    w-full
-                    object-cover
-                  "
-                  src="https://images.unsplash.com/photo-1605629921711-2f6b00c6bbf4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80"
-                  alt="Image Description"
-                />
-              </div>
-              <div class="absolute bottom-0 left-0 right-0 p-2 sm:p-4">
-                <div
-                  class="
-                    text-sm
-                    font-bold
-                    text-gray-800
-                    rounded-lg
-                    bg-white
-                    p-4
-                    md:text-xl
-                    dark:bg-gray-800 dark:text-gray-200
-                  "
-                >
-                  Women in engineering
-                </div>
-              </div>
-            </a>
-            <!-- End Card -->
-          </div>
-          <!-- End Col -->
-
-          <div class="col-span-12 md:col-span-4">
-            <!-- Card -->
-            <a class="group relative block rounded-xl overflow-hidden" href="#">
-              <div
-                class="
-                  aspect-w-12 aspect-h-7
-                  sm:aspect-none
-                  rounded-xl
-                  overflow-hidden
-                "
-              >
-                <img
-                  class="
-                    group-hover:scale-105
-                    transition-transform
-                    duration-500
-                    ease-in-out
-                    rounded-xl
-                    w-full
-                    object-cover
-                  "
-                  src="https://images.unsplash.com/photo-1606836576983-8b458e75221d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-                  alt="Image Description"
-                />
-              </div>
-              <div class="absolute bottom-0 left-0 right-0 p-2 sm:p-4">
-                <div
-                  class="
-                    text-sm
-                    font-bold
-                    text-gray-800
-                    rounded-lg
-                    bg-white
-                    p-4
-                    md:text-xl
-                    dark:bg-gray-800 dark:text-gray-200
-                  "
-                >
-                  Pride 2021
-                </div>
-              </div>
-            </a>
-            <!-- End Card -->
-          </div>
-          <!-- End Col -->
-
-          <div class="col-span-12 sm:col-span-6 md:col-span-4">
-            <!-- Card -->
-            <a class="group relative block rounded-xl overflow-hidden" href="#">
-              <div
-                class="
-                  aspect-w-12 aspect-h-7
-                  sm:aspect-none
-                  rounded-xl
-                  overflow-hidden
-                "
-              >
-                <img
-                  class="
-                    group-hover:scale-105
-                    transition-transform
-                    duration-500
-                    ease-in-out
-                    rounded-xl
-                    w-full
-                    object-cover
-                  "
-                  src="https://images.unsplash.com/photo-1598929438701-ef29ab0bb61a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80"
-                  alt="Image Description"
-                />
-              </div>
-              <div class="absolute bottom-0 left-0 right-0 p-2 sm:p-4">
-                <div
-                  class="
-                    text-sm
-                    font-bold
-                    text-gray-800
-                    rounded-lg
-                    bg-white
-                    p-4
-                    md:text-xl
-                    dark:bg-gray-800 dark:text-gray-200
-                  "
-                >
-                  Data at Preline
-                </div>
-              </div>
-            </a>
-            <!-- End Card -->
-          </div>
-          <!-- End Col -->
-
-          <div class="col-span-12 sm:col-span-6 md:col-span-4">
-            <!-- Card -->
-            <a class="group relative block rounded-xl overflow-hidden" href="#">
-              <div
-                class="
-                  aspect-w-12 aspect-h-7
-                  sm:aspect-none
-                  rounded-xl
-                  overflow-hidden
-                "
-              >
-                <img
-                  class="
-                    group-hover:scale-105
-                    transition-transform
-                    duration-500
-                    ease-in-out
-                    rounded-xl
-                    w-full
-                    object-cover
-                  "
-                  src="https://images.unsplash.com/photo-1467043153537-a4fba2cd39ef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1019&q=80"
-                  alt="Image Description"
-                />
-              </div>
-              <div class="absolute bottom-0 left-0 right-0 p-2 sm:p-4">
-                <div
-                  class="
-                    text-sm
-                    font-bold
-                    text-gray-800
-                    rounded-lg
-                    bg-white
-                    p-4
-                    md:text-xl
-                    dark:bg-gray-800 dark:text-gray-200
-                  "
-                >
-                  Empowered management
-                </div>
-              </div>
-            </a>
-            <!-- End Card -->
-          </div>
-          <!-- End Col -->
-        </div>
-        <!-- End Grid -->
-      </div>
-      <!-- End Masonry Cards -->
+      <!-- Masonry layout -->
+      <div class="masonry">
+  <figure class="masonry-brick"><img src="https://unsplash.it/700/400?image=1" class="masonry-img" alt="Masonry Brick #1"></figure>
+  <figure class="masonry-brick"><img src="https://unsplash.it/700/300?image=2" class="masonry-img" alt="Masonry Brick #2"></figure>
+  <figure class="masonry-brick"><img src="https://unsplash.it/700/500?image=3" class="masonry-img" alt="Masonry Brick #3"></figure>
+  <figure class="masonry-brick"><img src="https://unsplash.it/700/250?image=4" class="masonry-img" alt="Masonry Brick #4"></figure>
+  <figure class="masonry-brick"><img src="https://unsplash.it/700/450?image=5" class="masonry-img" alt="Masonry Brick #5"></figure>
+</div>
+      
+      <!-- End Masonry layput -->
     </template>
     <template #sidebar>
       <h2>this is the sidebar</h2>
@@ -262,6 +19,46 @@
       <h2>this is the sidebar</h2>
       <h2>this is the sidebar</h2>
       <h2>this is the sidebar</h2>
-     </template>
+    </template>
   </nuxt-layout>
 </template>
+<style>
+.masonry { 
+  display: flex;
+  flex-flow: row wrap;
+  margin-left: -8px; /* Adjustment for the gutter */
+  width: 100%;
+  counter-reset: brick;
+}
+
+.masonry-brick {
+  flex: auto;
+  height: 250px;
+  min-width: 150px;
+  margin: 0 8px 8px 0; /* Some gutter */
+  overflow: hidden;
+    border-radius: 5px;
+    margin: 0 0 8px 8px;
+    background-color: #333;
+    color: white;
+    position: relative;
+}
+.masonry-img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    filter: brightness(50%);
+}
+.masonry-brick:nth-child(4n+1) {
+  width: 250px;
+}
+.masonry-brick:nth-child(4n+2) {
+  width: 325px;
+}
+.masonry-brick:nth-child(4n+3) {
+  width: 180px;
+}
+.masonry-brick:nth-child(4n+4) {
+  width: 380px;
+}
+</style>
