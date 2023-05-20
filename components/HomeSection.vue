@@ -6,7 +6,7 @@
     <NuxtLink :to='"/news/"+post.slug'>
       <div class="sm:flex">
         <div class="flex-shrink-0 relative rounded-xl overflow-hidden w-full sm:w-56 h-52">
-          <img class="group-hover:scale-110 transition-transform duration-500 ease-in-out w-full h-full absolute top-0 left-0 object-cover rounded-xl" :src="post.image" alt="Image Description">
+          <img class="group-hover:scale-110 transition-transform duration-500 ease-in-out w-full h-full absolute top-0 left-0 object-cover rounded-xl shadow-lg shadow-black" :src="post.image" alt="Image Description">
         </div>
 
         <div class="grow mt-4 sm:mt-0 sm:mr-6 px-4 sm:px-0">
