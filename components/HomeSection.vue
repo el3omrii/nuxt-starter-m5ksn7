@@ -16,7 +16,7 @@
           <p class="mt-3 text-gray-600 dark:text-gray-400 text-sm">
             {{ post.description }}
           </p>
-          <p class="mt-4 inline-flex items-center gap-x-1.5 text-blue-600 decoration-2 hover:bg-primary/80 text-sm border rounded-full p-2">
+          <p class="mt-4 inline-flex items-center gap-x-1.5 text-blue-600 decoration-2 hover:text-white hover:bg-primary/80 transition text-sm border rounded-full p-2">
             تابع القراءة
             <svg class="w-2.5 h-2.5 rotate-180" width="16" height="16" viewBox="0 0 16 16" fill="none">
               <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>

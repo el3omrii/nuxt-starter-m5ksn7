@@ -21,7 +21,8 @@
               {{ article.content }}
             </div>
           </article>
-        </div>
+          </div>
+          <RelatedArticles :articles="article.related" />
       </template>
       <template #sidebar>
         <Latest />
@@ -30,4 +31,12 @@
   </template>
 <script setup>
 import article from "@/assets/article.json"
+useSeoMeta({
+  title: article.title,
+  ogTitle: article.title,
+  description: article.description,
+  ogDescription: article.description,
+  ogImage: article.image,
+  twitterCard: 'summary_large_image',
+})
 </script>
