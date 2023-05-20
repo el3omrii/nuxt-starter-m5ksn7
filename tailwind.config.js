@@ -11,11 +11,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        customblack: '#222831',
+        primary: '#2FA4FF',
+        secondary: '#1B262C',
         blackish: '#393E46',
         customgray: '#EEEEEE',
         navy: '#0A4D68',
-        teal: '#00ADB5',
         blue: '#088395',
       },
     },

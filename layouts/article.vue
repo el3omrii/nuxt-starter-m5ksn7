@@ -4,7 +4,7 @@
     <main id="content" role="main">
       <div class="max-w-[85rem] mt-4 px-4 sm:px-6 lg:px-8 mx-auto">
         <div
-          class="grid lg:grid-cols-4 md:gap-x-4 lg:gap-x-12"
+          class="grid lg:grid-cols-4 gap-y-4 lg:gap-y-0 lg:gap-x-3 lg:gap-x-12"
         >
           <div class="lg:col-span-3">
             <!-- Content -->

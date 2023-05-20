@@ -18,7 +18,7 @@
     <transition name="mega-menu">
     <div
       v-show="isVisible"
-      class="absolute p-2 w-full max-w-3xl h-44 rounded-lg shadow-md bg-teal"
+      class="absolute p-2 w-full max-w-3xl h-44 rounded-lg shadow-md bg-primary/90"
     >
       <ul class="flex gap-x-4 font-medium text-xs">
         <li>
@@ -103,7 +103,7 @@ const hideMenu = () => (isVisible.value = false);
 }
 .mega-menu-enter-from,
 .mega-menu-leave-to{
-   transform: translateY(-4rem);
+   transform: translateY(-2rem);
    opacity: 0;
 }
 </style>

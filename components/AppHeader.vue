@@ -3,7 +3,7 @@
       class="relative flex flex-wrap sm:justify-start sm:flex-col z-50 w-full bg-white border-b border-gray-200 text-sm pb-2 sm:pb-0 dark:bg-gray-800 dark:border-gray-700"
     >
       <!-- Topbar -->
-      <div class="mx-auto w-full px-4 sm:px-6 lg:px-8 bg-customblack">
+      <div class="mx-auto w-full px-4 sm:px-6 lg:px-8 bg-secondary">
         <div class="max-w-7xl flex items-center justify-end gap-x-2 w-full py-1">
           <a
             class="inline-flex justify-center items-center gap-x-3.5 w-10 h-10 text-center text-gray-400 hover:bg-white/[.1] rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-gray-900 transition"
@@ -78,13 +78,13 @@
       <!-- End Topbar -->
   
       <nav
-        class="w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8 bg-teal shadow-md shadow-black/50"
+        class="w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8 bg-primary shadow-md shadow-black/50"
         aria-label="Global"
       >
         <div class="flex max-w-7xl items-center justify-between">
-          <a
-            class="flex-none md:absolute top-0 h-full md:flex md:items-center px-2 text-xl font-semibold dark:text-white bg-teal md:shadow-md md:shadow-black/50"
-            href="#"
+          <NuxtLink to="/">
+          <div
+            class="flex-none md:absolute top-0 h-full md:flex md:items-center px-2 text-xl font-semibold dark:text-white bg-primary md:shadow-md md:shadow-black/50"
             aria-label="Brand"
           >
             <svg
@@ -98,7 +98,7 @@
               viewBox="0 0 250 70"
               enable-background="new 0 0 250 70"
               xml:space="preserve"
-              class="fill-customblack"
+              class="fill-secondary"
             >
               <g id="texte">
                 <rect
@@ -197,7 +197,8 @@
                 </g>
               </g>
             </svg>
-          </a>
+          </div>
+        </NuxtLink>
           <div class="sm:hidden">
             <button
               @click="toggleNav"
