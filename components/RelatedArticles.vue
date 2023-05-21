@@ -1,7 +1,4 @@
 <template>
-    <div class="mt-4">
-        <h2 class="inline-flex mt-4 p-4 text-2xl font-bold text-secondary bg-gray-100 border border-gray-300 rounded-md">مقالات ذات صلة</h2>
-        <div class="border-b-2 mb-4"></div>
     <Swiper :modules="[SwiperAutoplay, SwiperNavigation]" :slides-per-view="3"
     :space-between="50" :rewind="true" :navigation="true" :loop="true" :autoplay="{
         delay: 4000,
@@ -34,7 +31,6 @@
             </div>
         </SwiperSlide>
     </Swiper>
-    </div>
 </template>
 
 <script setup>

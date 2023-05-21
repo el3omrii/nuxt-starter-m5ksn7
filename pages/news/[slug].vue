@@ -22,6 +22,7 @@
             </div>
           </article>
           </div>
+          <SectionHead>مقالات ذات صلة</SectionHead>
           <RelatedArticles :articles="article.related" />
       </template>
       <template #sidebar>
