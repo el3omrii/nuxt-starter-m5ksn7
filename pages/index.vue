@@ -1,5 +1,5 @@
 <template>
-  <nuxt-layout name="home">
+  <nuxt-layout name="withsidebar">
     <template #content>
       <!-- Masonry layout -->
       <HomeMasonry />

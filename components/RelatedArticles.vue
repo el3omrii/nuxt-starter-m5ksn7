@@ -1,8 +1,6 @@
 <template>
     <Swiper :modules="[SwiperAutoplay, SwiperNavigation]" :slides-per-view="3"
-    :space-between="50" :rewind="true" :navigation="true" :loop="true" :autoplay="{
-        delay: 4000,
-    }">
+    :space-between="50" :navigation="true" :loop="true" :autoplay="true">
         <SwiperSlide v-for="article in articles" :key="article.id">
             <div class="group flex flex-col h-full border border-gray-200 hover:border-transparent hover:shadow-lg transition-all duration-300 rounded-xl p-5 dark:border-gray-700 dark:hover:border-transparent dark:hover:shadow-black/[.4]">
                 <NuxtLink :to="`/news/${article.slug}`">
@@ -34,9 +32,6 @@
 </template>
 
 <script setup>
-import 'swiper/css'
-import 'swiper/css/navigation';
-
 defineProps({
     articles: Object
 })

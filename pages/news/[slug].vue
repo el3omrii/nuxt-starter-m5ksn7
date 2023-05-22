@@ -1,5 +1,5 @@
 <template>
-    <nuxt-layout name="home">
+    <nuxt-layout name="withsidebar">
       <template #content>
         <div class="flex flex-col md:flex-row">
           <SharingWidget />
