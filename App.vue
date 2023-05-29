@@ -5,6 +5,15 @@
     </NuxtLayout>
   </div>
 </template>
+<script setup>
+
+const { setSettings } = useSettings()
+
+useAsyncData('settings', async () => {
+  const response = await $fetch('http://api.koratv.com/v1/settings')
+  setSettings(response)
+})
+</script>
 <style>
 .page-enter-active,
 .page-leave-active {

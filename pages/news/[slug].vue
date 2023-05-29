@@ -3,7 +3,7 @@
       <template #content>
         <div class="flex flex-col md:flex-row">
           <SharingWidget />
-          <article class="w-full md:mr-2">
+          <article v-if="article" class="w-full md:mr-2">
             <h1 class=" mb-4 text-secondary text-2xl font-bold">{{ article.title }}</h1>
             <div class="flex justify-between items-center p-4 mb-4 border-y">
               <div class="flex items-center gap-x-2">
@@ -31,7 +31,8 @@
     </nuxt-layout>
   </template>
 <script setup>
-import article from "@/assets/article.json"
+const route = useRoute()
+const {data: article} = await useApi('post/' + route.params.slug)
 useSeoMeta({
   title: article.title,
   ogTitle: article.title,
