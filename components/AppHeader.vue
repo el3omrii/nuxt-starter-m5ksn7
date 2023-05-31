@@ -199,7 +199,7 @@
             </svg>
           </div>
         </NuxtLink>
-          <div class="sm:hidden">
+          <div class="md:hidden">
             <button
               @click="toggleNav"
               type="button"
@@ -241,7 +241,7 @@
           class="overflow-hidden transition-all duration-300 basis-full grow"
         >
           <ul
-            class="hidden sm:flex items-center sm:gap-x-4 sm:mr-72 mr-0 text-white font-bold p-2"
+            class="hidden md:flex items-center sm:gap-x-4 mr-72 text-white font-bold p-2"
           >
             <li>
               <MegaMenu />
