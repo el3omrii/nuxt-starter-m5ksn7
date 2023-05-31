@@ -2,7 +2,7 @@
   <!-- Grid -->
   <div class="mt-4 grid lg:grid-cols-2 gap-8">
     <!-- Card -->
-    <div v-for="post in data.posts" class="group rounded-xl overflow-hidden">
+    <div v-for="post in posts" class="group rounded-xl overflow-hidden">
     <NuxtLink :to='"/news/"+post.slug'>
       <div class="sm:flex">
         <div class="flex-shrink-0 relative rounded-xl overflow-hidden w-full sm:w-56 h-52">
@@ -14,7 +14,7 @@
             {{ post.title }}
           </h3>
           <p class="mt-3 text-gray-600 dark:text-gray-400 text-sm">
-            {{ post.description }}
+            {{ post.excerpt }}
           </p>
           <p class="mt-4 inline-flex items-center gap-x-1.5 text-blue-600 decoration-2 hover:text-white hover:bg-primary/80 transition text-sm border rounded-full p-2">
             تابع القراءة
@@ -31,6 +31,6 @@
   <!-- End Grid -->
 </template>
 <script setup>
-import data from "@/assets/dummy.json"
-defineProps({category: Number})
+const {data: posts} = await useApi(`posts/latest?category=${props.category}&limit=6`)
+const props = defineProps({category: Number})
 </script>

@@ -14,6 +14,7 @@
           :disabled="isOnFirst()"
           :aria-disabled="isOnFirst()"
           aria-label="Goto page 1"
+          v-tooltip.arrow="navigationLabels.first"
         >
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 4.5l7.5 7.5-7.5 7.5m-6-15l7.5 7.5-7.5 7.5" />
@@ -27,6 +28,7 @@
           :disabled="isOnFirst()"
           :aria-disabled="isOnFirst()"
           aria-label="Goto previous page"
+          v-tooltip.arrow="navigationLabels.previous"
         >
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
@@ -66,6 +68,7 @@
           :disabled="isOnLast()"
           :aria-disabled="isOnLast()"
           aria-label="Goto next page"
+          v-tooltip.arrow="navigationLabels.next"
         >
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
@@ -82,6 +85,7 @@
           :disabled="isOnLast()"
           :aria-disabled="isOnLast()"
           aria-label="Goto last page"
+          v-tooltip.arrow="navigationLabels.last"
         >
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M18.75 19.5l-7.5-7.5 7.5-7.5m-6 15L5.25 12l7.5-7.5" />
@@ -102,11 +106,18 @@ export interface PaginationProps {
   pages: number;
   isBordered?: boolean;
   isFirstLast?: boolean;
+  navigationLabels?: any;
 }
 
 const props = withDefaults(defineProps<PaginationProps>(), {
   ariaLabel: "pagination",
   isFirstLast: true,
+  navigationLabels: {
+    first: "First",
+    last: "Last",
+    previous: "Previous",
+    next: "Next",
+  },
 });
 
 const styles = useCssModule();

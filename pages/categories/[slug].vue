@@ -37,7 +37,7 @@
     <!-- End Card -->
   </div>
   <!-- End Grid -->
-        <pagination @update-page="(value) => page = value" :current="page" :pages="posts.meta.last_page" />
+        <pagination @update-page="(value) => page = value" :current="page" :pages="posts.meta.last_page" :navigationLabels="labels"/>
         </template>
         <template #sidebar>
         <Latest />
@@ -48,7 +48,7 @@
 const runtimeConfigs = useRuntimeConfig()
 const slug = useRoute().params.slug
 const page = ref(1)
-const {data: posts, pending, refresh} = await useFetch(() => `${runtimeConfigs.public.API_URL}category/${slug}/posts?page=${page.value}`, { key: `${slug}-list-${page.value}`})
+const {data: posts, pending} = await useFetch(() => `${runtimeConfigs.public.API_URL}category/${slug}/posts?page=${page.value}`, { key: `${slug}-list-${page.value}`})
 useSeoMeta({
   title: posts.value.category.name,
   ogTitle: posts.value.category.name,
@@ -56,6 +56,12 @@ useSeoMeta({
   ogDescription: posts.value.category.description,
   twitterCard: 'summary_large_image',
 })
+const labels = {
+  first: 'الصفحة الاولى',
+  last: 'الصفحة الأخيرة',
+  next: 'الصفحة التالية',
+  previous: 'الصفحة السابقة'
+}
 </script>
 <style scoped>
 .page-title::before {

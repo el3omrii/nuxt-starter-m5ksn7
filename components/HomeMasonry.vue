@@ -18,7 +18,7 @@
   </div>
 </template>
 <script setup>
-const {data: posts} = await useApi('posts/featured')
+const {data: posts} = await useApi('posts/featured', {key: 'home-featured'})
 const { settings } = await useSettings()
 </script>
 <style>
