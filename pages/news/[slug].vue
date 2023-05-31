@@ -8,7 +8,7 @@
             <div class="flex justify-between items-center p-4 mb-4 border-y">
               <div class="flex items-center gap-x-2">
                 <span>المصدر: {{ article.source.name }}</span>
-                <img :src="article.source.image" class="w-8 h-8 bg-green-800" alt="source" />
+                <img :src="article.source.logo" class="w-8 h-8 bg-green-800" alt="source" />
                 <span>التاريخ:</span>
                 <span>{{ article.date }}</span>
               </div>
@@ -17,8 +17,7 @@
               </a>
             </div>
             <img class="md:w-3/4 lg:w-full h-auto shadow-lg shadow-black rounded-lg" :alt="article.title" :src="article.image" />
-            <div class="mt-4 text-justify lg:text-lg">
-              {{ article.content }}
+            <div v-html="article.content" class="mt-4 text-justify lg:text-lg">
             </div>
           </article>
           </div>
@@ -34,11 +33,11 @@
 const route = useRoute()
 const {data: article} = await useApi('post/' + route.params.slug)
 useSeoMeta({
-  title: article.title,
-  ogTitle: article.title,
-  description: article.description,
-  ogDescription: article.description,
-  ogImage: article.image,
+  title: article.value.title,
+  ogTitle: article.value.title,
+  description: article.value.description,
+  ogDescription: article.value.description,
+  ogImage: article.value.image,
   twitterCard: 'summary_large_image',
 })
 </script>

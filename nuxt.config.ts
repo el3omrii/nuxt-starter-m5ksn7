@@ -1,5 +1,11 @@
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
+  runtimeConfig: {
+    API_URL: "http://api.koratv.com/v1/",
+    public: {
+      API_URL: "http://api.koratv.com/v1/",
+    }
+  },
   modules: ['nuxt-swiper'],
   app: {
     head: {
