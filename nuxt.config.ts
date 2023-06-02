@@ -6,7 +6,6 @@ export default defineNuxtConfig({
       API_URL: "http://api.koratv.com/v1/",
     }
   },
-  modules: ['nuxt-swiper'],
   app: {
     head: {
       charset: 'utf-8',

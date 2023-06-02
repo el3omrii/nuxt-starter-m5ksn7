@@ -3,7 +3,7 @@
     <AppHeader />
     <main class="content" role="main">
       <slot name="header" />
-      <div class="max-w-[85rem] px-4 sm:px-6 lg:px-8 mx-auto">
+      <div class="max-w-[85rem] px-4 my-8 sm:px-6 lg:px-8 mx-auto">
         <div
           class="grid lg:grid-cols-4 md:gap-x-4 lg:gap-x-12"
         >

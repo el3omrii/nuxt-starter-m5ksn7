@@ -16,6 +16,9 @@
     "tailwindcss": "^3.3.2"
   },
   "dependencies": {
-    "nuxt-swiper": "^1.1.0"
+    "@headlessui/vue": "^1.7.14",
+    "@heroicons/vue": "^2.0.18",
+    "nuxt-swiper": "^1.1.0",
+    "vue3-carousel": "^0.3.1"
   }
 }

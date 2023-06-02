@@ -16,7 +16,7 @@
 </template>
 <script setup>
 const { settings } = await useSettings()
-console.log(settings.value)
+
 useSeoMeta({
   title: settings.value.website_title,
   ogTitle: settings.value.website_title,
