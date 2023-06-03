@@ -23,6 +23,7 @@
       </div>
     </main>
     <AppFooter />
+    <BackToTop />
   </div>
 </template>
 <script setup>
