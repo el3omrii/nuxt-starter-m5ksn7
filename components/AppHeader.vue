@@ -244,6 +244,13 @@
             class="hidden md:flex items-center sm:gap-x-4 mr-72 text-white font-bold p-2"
           >
             <li>
+              <NuxtLink to="/"
+                class="sm:py-6 text-blue-600 hover:text-customgray"
+                aria-current="page"
+                >الرئيسية
+              </NuxtLink>
+            </li>
+            <li>
               <MegaMenu />
             </li>
             <li>
