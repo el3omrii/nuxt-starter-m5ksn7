@@ -245,7 +245,8 @@
           >
             <li>
               <NuxtLink to="/"
-                class="sm:py-6 text-blue-600 hover:text-customgray"
+                class="menu-link"
+                active-class="border-b-2 border-white"
                 aria-current="page"
                 >الرئيسية
               </NuxtLink>
@@ -260,6 +261,14 @@
                 aria-current="page"
                 >كرة عربية
               </a>
+            </li>
+            <li>
+              <NuxtLink to="/slug"
+                class="menu-link"
+                active-class="border-b-2 border-white"
+                aria-current="page"
+                >مباريات اليوم
+              </NuxtLink>
             </li>
           </ul>
         </div>

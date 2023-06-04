@@ -8,6 +8,12 @@
     font-family: Cairo, system-ui, sans-serif;
   }
 }
+@layer components {
+  .menu-link {
+    /*@apply relative text-white hover:text-gray-200 before:absolute before:h-[3px] before:w-0 before:bg-white before:right-0 before:top-3 after:absolute after:h-[3px] after:w-0 after:bg-white after:left-0 after:bottom-3 hover:before:w-full hover:after:w-full before:transition-all after:transition-all duration-500*/
+    @apply text-lg text-white hover:text-gray-300 p-4
+  }
+}
 
 :root {
   --v-tooltip-left: 50%;

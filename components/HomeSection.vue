@@ -1,5 +1,11 @@
 <template>
   <!-- Grid -->
+  <div class="flex justify-between items-center py-4 mb-4 border-y border-gray-300">
+    <span class="inline-flex items-center text-xl text-secondary font-bold"><TagIcon class="w-5 h-5 ml-2" />أخبار عالمية</span>
+    <span>
+      <CategorySort @selected="(value)=>sort=value"/>
+    </span>
+  </div>
   <div class="mt-4 grid lg:grid-cols-2 gap-8">
     <!-- Card -->
     <div v-for="post in posts" class="group rounded-xl overflow-hidden">
@@ -31,6 +37,7 @@
   <!-- End Grid -->
 </template>
 <script setup>
+import { TagIcon } from '@heroicons/vue/24/outline'
 const {data: posts} = await useApi(`posts/latest?category=${props.category}&limit=6`)
 const props = defineProps({category: Number})
 </script>
