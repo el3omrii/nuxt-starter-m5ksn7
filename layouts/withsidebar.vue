@@ -3,6 +3,9 @@
     <AppHeader />
     <main class="content" role="main">
       <div class="max-w-[85rem] my-8 px-4 sm:px-6 lg:px-8 mx-auto">
+        <!-- Matchs -->
+        <slot name="matchs" />
+        <!-- End Matchs -->
         <div
           class="grid lg:grid-cols-4 lg:gap-x-12"
         >

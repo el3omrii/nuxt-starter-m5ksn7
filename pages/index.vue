@@ -1,5 +1,10 @@
 <template>
   <nuxt-layout name="withsidebar">
+    <template #matchs>
+       <!-- Match List -->
+      <MatchList />
+      <!-- End Match list -->
+    </template>
     <template #content>
       <!-- Masonry layout -->
       <HomeMasonry />

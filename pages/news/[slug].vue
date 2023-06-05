@@ -37,6 +37,7 @@
           <RelatedArticles :articles="article.related" />
       </template>
       <template #sidebar>
+        <NextMatch class="mb-4" />
         <Latest />
       </template>
     </nuxt-layout>
