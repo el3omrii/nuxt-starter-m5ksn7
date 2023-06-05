@@ -285,10 +285,26 @@
           </p>
         </div>
       </div>
+      <div v-if="header.disposition == 'article'"
+           class="fixed flex items-center justify-center w-full h-16 top-0 bg-white/90 shadow-md transition-all transform duration-300 translate-y-6"
+           :class="[!sticky ? '-translate-y-full' : 'translate-y-0']"
+      >
+        <div class="rounded-full bg-primary py-2 px-4 ml-8 text-white">
+          {{ header.meta.category }}
+        </div>
+        <h2 class="text-secondary text-xl">{{ header.meta.title }}</h2>
+      </div>  
     </header>
   </template>
   <script setup>
   const isOpen = useState("isOpen", () => false);
   const toggleNav = () => (isOpen.value = !isOpen.value);
+  const header = useState('header')
+  const sticky = ref(false)
+  onMounted(() => {
+    window.addEventListener('scroll', () => {
+        sticky.value = window.scrollY > 200 ? true: false
+    })
+})
   </script>
   

@@ -54,4 +54,10 @@ useSeoMeta({
   ogImage: article.value.image,
   twitterCard: 'summary_large_image',
 })
+const header = useState('header')
+header.value.disposition = 'article'
+header.value.meta = {
+  title: article.value.title,
+  category: article.value.categories[0].name
+}
 </script>

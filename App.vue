@@ -6,7 +6,9 @@
   </div>
 </template>
 <script setup>
-
+const header = useState("header", () => {
+  return { disposition: 'homepage', meta: {}}
+});
 const { setSettings } = useSettings()
 
 useAsyncData('settings', async () => {

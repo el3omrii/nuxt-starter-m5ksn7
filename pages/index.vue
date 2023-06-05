@@ -28,4 +28,8 @@ useSeoMeta({
   ogDescription: settings.value.website_description,
   twitterCard: 'summary_large_image',
 })
+
+const header = useState('header')
+header.value.disposition = 'homepage'
+header.value.meta = {}
 </script>
