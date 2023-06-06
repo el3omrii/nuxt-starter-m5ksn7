@@ -275,8 +275,9 @@
       </nav>
       <!-- off canvas nav-->
       <div
-        class="md:hidden fixed top-14 right-0 transition-all duration-300 transform h-full max-w-xs w-full z-[60] bg-teal border-r dark:bg-gray-800 dark:border-gray-700"
+        class="md:hidden fixed top-0 right-0 transition-all duration-300 transform h-full max-w-xs w-full z-[60] bg-primary border-r dark:bg-gray-800 dark:border-gray-700"
         :class="[!isOpen ? 'translate-x-full' : 'translate-x-0']"
+        ref="mobileNav"
       >
         <div class="p-4">
           <p class="text-gray-800 dark:text-gray-400">
@@ -286,25 +287,26 @@
         </div>
       </div>
       <div v-if="header.disposition == 'article'"
-           class="fixed flex items-center justify-center w-full h-16 top-0 bg-white/90 shadow-md transition-all transform duration-300 translate-y-6"
+           class="fixed flex items-center justify-center w-full h-16 top-0 bg-white/90 shadow-md transition duration-300"
            :class="[!sticky ? '-translate-y-full' : 'translate-y-0']"
       >
-        <div class="rounded-full bg-primary py-2 px-4 ml-8 text-white">
+        <div class="rounded-full bg-primary py-2 px-4 ml-8 text-white whitespace-nowrap">
           {{ header.meta.category }}
         </div>
         <h2 class="text-secondary text-xl">{{ header.meta.title }}</h2>
       </div>  
     </header>
   </template>
-  <script setup>
+<script setup>
   const isOpen = useState("isOpen", () => false);
   const toggleNav = () => (isOpen.value = !isOpen.value);
   const header = useState('header')
   const sticky = ref(false)
+  const mobileNav = ref()
   onMounted(() => {
     window.addEventListener('scroll', () => {
         sticky.value = window.scrollY > 200 ? true: false
     })
-})
-  </script>
+  })
+</script>
   

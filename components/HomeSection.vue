@@ -1,23 +1,21 @@
 <template>
   <!-- Grid -->
   <div class="flex justify-between items-center py-4 mb-4 border-y border-gray-300">
-    <span class="inline-flex items-center text-xl text-secondary font-bold"><TagIcon class="w-5 h-5 ml-2" />أخبار عالمية</span>
-    <div class="flex gap-x-4">
-      <CategorySort @selected="(value)=>sort=value"/>
+    <span class="inline-flex items-center text-xl text-secondary font-bold"><TagIcon class="w-5 h-5 ml-2" />أخبار عالمية
       <NuxtLink to="categories/كرة-عالمية" 
-                class="flex items-center px-4 py-2 bg-primary/90 text-white shadow-md rounded-md">
+                class="flex items-center px-4 py-2 bg-primary/90 text-white shadow-md rounded-md font-normal text-sm mr-4">
                 المزيد
-                <ArrowLongLeftIcon class="text-whie w-5 h-5 mr-2" />
+                <ArrowLongLeftIcon class="text-white w-5 h-5 mr-2" />
       </NuxtLink>
-    </div>
-    
+    </span>
+      <CategorySort @selected="(value)=>sort=value"/>
   </div>
   <div class="mt-4 grid lg:grid-cols-2 gap-8">
     <!-- Card -->
     <div v-for="post in posts" class="group rounded-xl overflow-hidden">
     <NuxtLink :to='"/news/"+post.slug'>
-      <div class="sm:flex">
-        <div class="flex-shrink-0 relative rounded-xl overflow-hidden w-full sm:w-56 h-52">
+      <div class="flex items-center">
+        <div class="flex-shrink-0 relative rounded-xl overflow-hidden w-20 h-24 lg:w-56 lg:h-52 md:w-40 md:h-40">
           <img class="group-hover:scale-110 transition-transform duration-500 ease-in-out w-full h-full absolute top-0 left-0 object-cover rounded-xl shadow-lg shadow-black" :src="post.image" alt="Image Description">
         </div>
 
@@ -25,7 +23,7 @@
           <h3 class="text-md font-semibold text-gray-800 group-hover:text-gray-600 dark:text-gray-300 dark:group-hover:text-white">
             {{ post.title }}
           </h3>
-          <p class="mt-3 text-gray-600 dark:text-gray-400 text-sm">
+          <p class="mt-3 text-gray-600 dark:text-gray-400 text-sm text-justify">
             {{ post.excerpt }}
           </p>
           <p class="mt-4 inline-flex items-center gap-x-1.5 text-blue-600 decoration-2 hover:text-white hover:bg-primary/80 transition text-sm border rounded-full p-2">

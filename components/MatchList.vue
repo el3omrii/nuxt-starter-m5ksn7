@@ -34,6 +34,9 @@ import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 import { ArrowLongLeftIcon, ArrowLongRightIcon } from '@heroicons/vue/24/outline'
 const mycarousel = ref(null)
 const breakpoints = {
+    480: {
+        itemsToShow: 1.5
+    },
     768: {
         itemsToShow: 3
     },

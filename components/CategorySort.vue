@@ -1,6 +1,6 @@
 <template>
 <div class="flex items-center">
-    <span class="ml-2">التصنيف:</span>
+    <span class="hidden sm:block ml-2">الترتيب حسب:</span>
     <Listbox v-model="selectedOption">
       <div class="relative mt-1 w-48">
         <ListboxButton

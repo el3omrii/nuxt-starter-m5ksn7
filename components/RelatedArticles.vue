@@ -1,5 +1,5 @@
 <template>
-    <carousel :items-to-show="3" :wrap-around="true" dir="rtl">
+    <carousel :breakpoints="breakpoints" :autoplay="5000" :wrap-around="true" dir="rtl">
         <slide v-for="(article, index) in articles" :key="index">
             <div
                 class="h-full m-2 p-4 border border-gray-200 hover:border-gray-500 hover:shadow-xl transition-all duration-300 rounded-xl">
@@ -41,4 +41,15 @@ import { ClockIcon, ChevronLeftIcon } from '@heroicons/vue/24/outline'
 defineProps({
     articles: Object
 })
+const breakpoints = {
+    480: {
+        itemsToShow: 1.5
+    },
+    768: {
+        itemsToShow: 2
+    },
+    1024: {
+        itemsToShow: 3
+    }
+}
 </script>

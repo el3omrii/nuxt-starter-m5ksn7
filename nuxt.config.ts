@@ -14,7 +14,7 @@ export default defineNuxtConfig({
     pageTransition: { name: 'page', mode: 'out-in' }
   },
   plugins: ['~/plugins/directives.js'],
-  css: ['@/assets/css/main.css', 'swiper/css', 'swiper/css/navigation'],
+  css: ['@/assets/css/main.css'],
   postcss: {
     plugins: {
       tailwindcss: {},
