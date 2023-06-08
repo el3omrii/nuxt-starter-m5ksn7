@@ -6,11 +6,12 @@
         </div>
         <div class="absolute bottom-0 inset-x-0 z-10">
             <div class="flex flex-col h-full p-4 sm:p-6">
-              <NuxtLink :to="`/news/${post.slug}`" class="text-lg sm:text-xl font-semibold text-white group-hover:text-white/[.8]">
+              <NuxtLink :to="`/${post.category.slug}/${post.slug}`" class="text-lg sm:text-xl font-semibold text-white group-hover:text-white/[.8]">
                 {{ post.title }}
               </NuxtLink>
               <div class="flex items-center gap-x-2 mt-2 text-xs text-white/[.8]">
-                <a href="#" v-for="category in post.categories" class="border rounded-md p-1 hover:bg-primary/[.6] hover:border-primary transition duration-300"># {{ category.name }}</a>
+                <NuxtLink :to="`/category/${post.category.slug}`" class="border rounded-md p-1 hover:bg-primary/[.6] hover:border-primary transition duration-300"># {{ post.category.name }}</NuxtLink>
+                <NuxtLink v-if="post.category.parent" :to="`/category/${post.category.parent.slug}`" class="border rounded-md p-1 hover:bg-primary/[.6] hover:border-primary transition duration-300"># {{ post.category.parent.name }}</NuxtLink>
               </div>
             </div>
           </div>

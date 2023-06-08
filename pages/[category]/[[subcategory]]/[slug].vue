@@ -2,7 +2,7 @@
     <nuxt-layout name="withsidebar">
       <template #content>
         <div class="flex flex-col md:flex-row">
-          <SharingWidget />
+          <SharingWidget @fontChanged="size => fontSize = size"/>
           <article v-if="article" class="w-full md:mr-2">
             <h1 class=" mb-4 text-secondary text-2xl font-bold">{{ article.title }}</h1>
             <div class="flex justify-between items-center py-4 mb-4 border-y">
@@ -24,7 +24,7 @@
               </a>
             </div>
             <img class="w-full h-auto shadow-lg shadow-black rounded-lg" :alt="article.title" :src="article.image" />
-            <div v-html="article.content" class="mt-4 text-justify lg:text-lg">
+            <div v-html="article.content" class="mt-4 text-justify" :class="fontSize">
             </div>
           </article>
           </div>
@@ -60,4 +60,5 @@ header.value.meta = {
   title: article.value.title,
   category: article.value.category.name
 }
+const fontSize = ref('text-lg')
 </script>
