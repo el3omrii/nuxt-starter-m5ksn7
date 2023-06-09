@@ -14,7 +14,9 @@
       </span>
         </div>
          <!-- Grid -->
-  <div v-if="posts?.data" class="mt-4 grid lg:grid-cols-2 gap-8">
+  <div v-if="posts?.data" class="relative mt-4 grid lg:grid-cols-2 gap-8">
+    <!-- Loader -->
+    <FootballLoader v-if="pending"/>
     <!-- Card -->
     <div v-for="post in posts.data" class="group rounded-xl overflow-hidden hover:shadow-md transition">
     <NuxtLink :to='"/news/"+post.slug'>
