@@ -34,7 +34,7 @@
             <span class="rounded-full p-2 bg-primary text-white">Tag 1</span>
           </div>
           <SectionHead>مقالات ذات صلة</SectionHead>
-          <RelatedArticles :articles="article.related" />
+          <RelatedArticles :articles="{data: article.related, category:article.category}" />
       </template>
       <template #sidebar>
         <NextMatch class="mb-4" />

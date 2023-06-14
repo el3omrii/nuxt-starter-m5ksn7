@@ -4,7 +4,7 @@
         <div v-for="post in posts" class="flex items-center py-4 text-sm">
             <img :src="post.image" alt="" class="w-18 h-20 lg:w-14 lg:h-16 object-cover ml-4 rounded-md object-cover" />
             <div class="flex flex-col">
-            <NuxtLink :to="`/news/${post.slug}`">
+            <NuxtLink :to="`/${post.category.slug}/${post.slug}`">
                 <h5 class="text-lg lg:text-sm">{{ post.title }}</h5>
             </NuxtLink>
             <span class="flex items-center mt-2">

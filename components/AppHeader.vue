@@ -255,15 +255,15 @@
               <MegaMenu />
             </li>
             <li>
-              <a
-                class="sm:py-6 text-blue-600 hover:text-customgray"
-                href="#"
+              <NuxtLink to="/category/كرة-عربية"
+                class="menu-link"
+                active-class="border-b-2 border-white"
                 aria-current="page"
-                >كرة عربية
-              </a>
+                 >كرة عربية
+              </NuxtLink>
             </li>
             <li>
-              <NuxtLink to="/slug"
+              <NuxtLink to="/matches"
                 class="menu-link"
                 active-class="border-b-2 border-white"
                 aria-current="page"

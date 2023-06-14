@@ -1,9 +1,9 @@
 <template>
     <carousel :breakpoints="breakpoints" :autoplay="5000" :wrap-around="true" dir="rtl">
-        <slide v-for="(article, index) in articles" :key="index">
+        <slide v-for="(article, index) in articles.data" :key="index">
             <div
                 class="h-full m-2 p-4 border border-gray-200 hover:border-gray-500 hover:shadow-xl transition-all duration-300 rounded-xl">
-                <NuxtLink :to="`/news/${article.slug}`" class="flex flex-col justify-between h-full group">
+                <NuxtLink :to="`/${articles.category.slug}/${article.slug}`" class="flex flex-col justify-between h-full group">
                     <div><img class="w-full h-40 object-cover rounded-xl" :src="article.image" :alt="article.title">
                         <div class="my-4">
                             <h3 class="text-lg text-secondary group-hover:text-primary">

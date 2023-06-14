@@ -1,7 +1,7 @@
 <template>
   <div @mouseover="showMenu" @mouseleave="hideMenu" class="group">
     <div class="flex items-center">
-      <NuxtLink to="/categories/كرة-عالمية" class="menu-link" active-class="border-b-2 border-white">كرة عالمية</NuxtLink>
+      <NuxtLink to="/category/كرة-عالمية" class="menu-link" active-class="border-b-2 border-white">كرة عالمية</NuxtLink>
       <svg
         class="h-5 w-5 flex-none text-white transition group-hover:rotate-180"
         viewBox="0 0 20 20"
