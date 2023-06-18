@@ -14,15 +14,15 @@
                   <div class="p-2 bg-gray-300 rounded-md group-hover:bg-gray-600" v-tooltip.arrow="'فعل الإشعارات لهذه المباراة'">
                     <BellAlertIcon class="w-5 h-5"/>
                   </div>
-                  <LeagueLogo :league="{'id': fixture.fixture_data.league.id, 'logo': 'http://cdn.koratv.com'+fixture.league_logo, 'name':fixture.league}" />
+                  <LeagueLogo :league="{'id': fixture.fixture_data.league.id, 'logo': fixture.league_logo, 'name':fixture.league}" />
                   <div class="flex items-center px-4 py-2 bg-red-200 text-red-700 text-sm rounded-md"><span class="w-2 h-2 block bg-red-500 rounded-full ml-2"></span>مباشر</div>
                 </div>
                 <hr class="h-[2px] my-4 bg-gray-400" />
                 <div class="flex items-center justify-between mx-8">
                   <div class="flex flex-col items-center">
                     <div class="rounded-full bg-gray-100 group-hover:bg-secondary p-4 transition">
-                      <img :src="'http://cdn.koratv.com'+fixture.home_logo" :alt="fixture.home"
-                            class="w-28 h-28 p-2 rounded-full shadow-md shadow-black/90" />
+                      <img :src="fixture.home_logo" :alt="fixture.home"
+                            class="w-28 h-28 object-contain p-2 rounded-full shadow-md shadow-black/90" />
                     </div>
                     <span class="text-xl font-bold">{{fixture.home}}</span>
                   </div>
@@ -45,7 +45,7 @@
                       <span class="text-gray-400">{{ fixture.venue }}</span>
                     </div>
                     <!-- END LOCATION -->
-                    <button class="relative -bottom-12 px-8 py-4 bg-primary rounded-md text-white text-2xl">تابع المباراة</button>
+                    <NuxtLink :to="`/live/${fixture.fixture_id}-${fixture.home}-${fixture.away}`" class="relative -bottom-12 -mt-4 px-8 py-4 bg-primary rounded-md text-white text-2xl">تابع المباراة</NuxtLink>
                   </div>
                   <div v-else-if="fixture.fixture_data.fixture.status.short == 'NS'" 
                        class="flex flex-col items-center">
@@ -59,13 +59,13 @@
                       <span class="text-gray-400">{{ fixture.venue }}</span>
                     </div>
                     <!-- END LOCATION -->
-                    <NuxtLink :to="`/live/${fixture.home}-${fixture.away}`" class="relative -bottom-12 -mt-4 px-8 py-4 bg-primary rounded-md text-white text-2xl">تابع المباراة</NuxtLink>
+                    <NuxtLink :to="`/live/${fixture.fixture_id}-${fixture.home}-${fixture.away}`" class="relative -bottom-12 -mt-4 px-8 py-4 bg-primary rounded-md text-white text-2xl">تابع المباراة</NuxtLink>
                   </div>
                   <!-- END MATCH INFO -->
                   <div class="flex flex-col items-center">
                     <div class="rounded-full bg-gray-100 group-hover:bg-secondary p-4 transition">
-                      <img :src="'http://cdn.koratv.com'+fixture.away_logo" :alt="fixture.away"
-                            class="w-28 h-28 p-2 rounded-full shadow-md shadow-black/90" />
+                      <img :src="fixture.away_logo" :alt="fixture.away"
+                            class="w-28 h-28 object-contain p-2 rounded-full shadow-md shadow-black/90" />
                     </div>
                     <span class="text-xl font-bold">{{fixture.away}}</span>
                   </div>
@@ -82,13 +82,6 @@
 import { TagIcon, BellAlertIcon, MapPinIcon, ClockIcon } from '@heroicons/vue/24/outline'
 import { DateTime as dt } from 'luxon'
 const {data: fixtures, pending} = await useApi('fixtures')
-/*useSeoMeta({
-  title: posts.value.category.name,
-  ogTitle: posts.value.category.name,
-  description: posts.value.category.description,
-  ogDescription: posts.value.category.description,
-  twitterCard: 'summary_large_image',
-})*/
 
 </script>
 <style scoped>
