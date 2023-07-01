@@ -11,9 +11,10 @@ const header = useState("header", () => {
   return { disposition: 'homepage', meta: {}}
 });
 const { setSettings } = useSettings()
+const config = useRuntimeConfig();
 
 useAsyncData('settings', async () => {
-  const response = await $fetch('http://api.koratv.com/v1/settings')
+  const response = await $fetch(`${config.public.API_URL}/settings`)
   setSettings(response)
 })
 </script>

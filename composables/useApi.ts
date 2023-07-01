@@ -1,3 +1,4 @@
 export const useApi = async (path:string) => {
-    return await useFetch(() => `http://api.koratv.com/v1/${path}`, {key: path})
+    const config = useRuntimeConfig();
+    return await useFetch(() => `${config.public.API_URL}/${path}`, {key: path})
 }

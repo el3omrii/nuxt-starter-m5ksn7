@@ -59,7 +59,7 @@ const runtimeConfigs = useRuntimeConfig()
 const slug = useRoute().params.slug
 const page = ref(1)
 const sort = ref('created_at')
-const {data: posts, pending} = await useFetch(() => `${runtimeConfigs.public.API_URL}category/${slug}/posts?page=${page.value}&orderBy=${sort.value}`, { key: `${slug}-list-${page.value}`})
+const {data: posts, pending} = await useFetch(() => `${runtimeConfigs.public.API_URL}/category/${slug}/posts?page=${page.value}&orderBy=${sort.value}`, { key: `${slug}-list-${page.value}`})
 useSeoMeta({
   title: posts.value.category.name,
   ogTitle: posts.value.category.name,

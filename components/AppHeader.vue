@@ -295,6 +295,25 @@
         </div>
         <h2 class="text-secondary text-xl">{{ header.meta.title }}</h2>
       </div>  
+      <div v-else-if="header.disposition == 'match'"
+           class="fixed flex items-center justify-center w-full h-16 top-0 bg-white/90 shadow-md transition duration-300"
+           :class="[!sticky ? '-translate-y-full' : 'translate-y-0']"
+      >
+        <div class="w-full mx-20 flex justify-between iitems-center">
+          <div class="flex items-center">
+            <img :src="header.meta.home" class="w-14 h-14">
+            <span class="text-2xl">{{ header.meta.home_score }}</span>
+          </div>
+          <span v-if="header.meta.status == 'FT'" class="text-red-600 text-2xl font-bold my-2">إنتهت المباراة</span>
+          <span v-if="header.meta.status == 'AET'" class="text-red-600 text-2xl font-bold my-2">إنتهت المباراة أشواط
+            إضافية</span>
+          <div class="flex flex-row-reverse items-center">
+            <img :src="header.meta.away" class="w-14 h-14">
+            <span class="text-2xl">{{ header.meta.away_score }}</span>
+          </div>
+        </div>
+        
+      </div>  
     </header>
   </template>
 <script setup>
@@ -305,7 +324,9 @@
   const mobileNav = ref()
   onMounted(() => {
     window.addEventListener('scroll', () => {
-        sticky.value = window.scrollY > 200 ? true: false
+        let limit = 200
+        header.value.disposition == 'match' ? limit = 500 : limit = 200
+        sticky.value = window.scrollY > limit ? true: false
     })
   })
 </script>

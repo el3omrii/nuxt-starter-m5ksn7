@@ -10,19 +10,19 @@
         </button>
     </div>
     <carousel ref="mycarousel" :items-to-show="3" :wrap-around="true" dir="rtl" :breakpoints="breakpoints" :navigation="false" :autoplay="5000" class="mb-4">
-        <slide v-for="(article, index) in 8" :key="index">
+        <slide v-for="(fixture, index) in fixtures" :key="index">
             <div class="flex bg-slate-200 text-secondary rounded-xl border border-gray-400 p-4 mx-2 hover:bg-secondary/90 hover:text-white transition duration-500">
                 <div class="flex flex-col items-center gap-y-2">
-                <img src="https://media-1.api-sports.io/football/teams/541.png" class="w-14 h-14" alt="Real Madrid" />
-                <p class="font-bold whitespace-nowrap">ريال مدريد</p>
+                <img :src="fixture.home_logo" class="w-14 h-14" alt="fixture.home" />
+                <p class="font-bold whitespace-nowrap">{{ fixture.home }}</p>
             </div>
             <div>
             <p class="text-2xl text-red-500">15:00</p>
-            <p class="text-sm">سانتياغو بيرنابيو، مدريد</p>
+            <!--p class="text-sm">{{fixture.venue}}</p-->
             </div>
             <div class="flex flex-col items-center gap-y-2">
-                <img src="https://media-2.api-sports.io/football/teams/531.png" class="w-14 h-14" alt="Real Madrid" />
-                <p class="font-bold whitespace-nowrap">أتلتيك بيلباو</p>
+                <img :src="fixture.away_logo" class="w-14 h-14" alt="fixture.away" />
+                <p class="font-bold whitespace-nowrap">{{ fixture.away }}</p>
             </div>
             </div>
         </slide>
@@ -32,6 +32,7 @@
 import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 import { ArrowLongLeftIcon, ArrowLongRightIcon } from '@heroicons/vue/24/outline'
+const {data: fixtures, pending} = await useApi('fixtures')
 const mycarousel = ref(null)
 const breakpoints = {
     480: {
