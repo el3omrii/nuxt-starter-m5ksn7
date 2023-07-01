@@ -10,65 +10,76 @@
     </template>
     <template #content>
       <div class="border rounded-md shadow-lg p-4">
-      <div class="flex justify-between">
-        <div class="flex items-center">
-          <img :src="fixture.fixture.league_logo" :alt="fixture.fixture.league" class="h-20 w-auto ml-2" />
-          <div class="flex flex-col">
-            <span>{{ fixture.fixture.league }}</span>
-            <span class="text-xl font-bold">{{ fixture.fixture.home }} ضد {{ fixture.fixture.away }}</span>
-            <span>متابعة ونتائج مباشرة</span>
+        <div class="flex justify-between items-center">
+          <div class="flex items-center">
+            <LeagueLogo :league="fixture.data.league" :show-name="false" />
+            <div class="flex flex-col">
+              <span>{{ fixture.fixture.league }}</span>
+              <span class="text-xl font-bold">{{ fixture.fixture.home }} ضد {{ fixture.fixture.away }}</span>
+              <span>متابعة ونتائج مباشرة</span>
+            </div>
+          </div>
+          <div class="notification-alert" v-tooltip.arrow="'فعل الإشعارات'">
+            <Switch v-model="enabled" :class="enabled ? 'bg-primary/80' : 'bg-gray-200'"
+              class="relative inline-flex h-10 w-16 items-center rounded-full">
+              <span class="sr-only">Enable notifications</span>
+              <span :class="enabled ? '-translate-x-6' : '-translate-x-1'"
+                class="inline-flex items-center justify-center h-8 w-8 transform rounded-full bg-white transition">
+                <BellAlertIcon class="w-4 h-4 text-gray-600" />
+              </span>
+            </Switch>
           </div>
         </div>
-        <p>switcher here</p>
-      </div>
-      <div class="flex items-center justify-between mt-8 lg:mx-12 md:mx-8">
-        <div class="flex flex-col items-center">
-          <div class="rounded-full bg-gray-100 group-hover:bg-secondary p-4 transition">
-            <img :src="fixture.fixture.home_logo" :alt="fixture.fixture.home"
-              class="w-28 h-28 object-contain p-2 rounded-full shadow-md shadow-black/90" />
+        <div class="flex items-center justify-between mt-8 lg:mx-12 md:mx-8">
+          <div class="flex flex-col items-center">
+            <div class="rounded-full bg-gray-100 group-hover:bg-secondary p-4 transition">
+              <img :src="fixture.fixture.home_logo" :alt="fixture.fixture.home"
+                class="w-28 h-28 object-contain p-2 rounded-full shadow-md shadow-black/90" />
+            </div>
+            <span class="text-xl font-bold">{{ fixture.fixture.home }}</span>
           </div>
-          <span class="text-xl font-bold">{{ fixture.fixture.home }}</span>
-        </div>
-        <!-- Match Info -->
-        <div v-if="fixture.data.fixture.status.short == 'FT' || fixture.data.fixture.status.short == 'AET'"
-          class="flex flex-col items-center">
-          <span class="inline-flex items-center text-2xl text-red-600 font-bold">
-            <ClockIcon class="w-5 h-5 ml-2" />{{ dt.fromISO(fixture.fixture.date).toFormat('HH:mm') }}
-          </span>
-          <span class="text-lg text-secondary font-bold group-hover:text-white">{{
-            dt.fromISO(fixture.fixture.date).toFormat('dd/MM/yyyy') }}</span>
-          <!-- SCORE -->
-          <div class="flex gap-x-4 text-7xl font-bold">
-            <span class="">{{ fixture.data.goals.home }}</span>
-            <span>:</span>
-            <span class="">{{ fixture.data.goals.away }}</span>
+          <!-- Match Info -->
+          <div v-if="fixture.data.fixture.status.short == 'FT' || fixture.data.fixture.status.short == 'AET'"
+            class="flex flex-col items-center">
+            <span class="inline-flex items-center text-2xl text-red-600 font-bold">
+              <ClockIcon class="w-5 h-5 ml-2" />{{ dt.fromISO(fixture.fixture.date).toFormat('HH:mm') }}
+            </span>
+            <span class="text-lg text-secondary font-bold group-hover:text-white">{{
+              dt.fromISO(fixture.fixture.date).toFormat('dd/MM/yyyy') }}</span>
+            <!-- SCORE -->
+            <div class="flex gap-x-4 text-6xl font-bold">
+              <span class="px-4 py-1 rounded-md bg-secondary text-white">{{ fixture.data.goals.home }}</span>
+              <span>:</span>
+              <span class="px-4 py-1 rounded-md bg-secondary text-white">{{ fixture.data.goals.away }}</span>
+            </div>
+            <span v-if="fixture.data.fixture.status.short == 'FT'" class="text-red-600 font-bold my-2">إنتهت
+              المباراة</span>
+            <span v-if="fixture.data.fixture.status.short == 'AET'" class="text-red-600 font-bold my-2">إنتهت المباراة
+              أشواط
+              إضافية</span>
+            <!-- END SCORE -->
           </div>
-          <span v-if="fixture.data.fixture.status.short == 'FT'" class="text-red-600 font-bold my-2">إنتهت المباراة</span>
-          <span v-if="fixture.data.fixture.status.short == 'AET'" class="text-red-600 font-bold my-2">إنتهت المباراة أشواط
-            إضافية</span>
-          <!-- END SCORE -->
-        </div>
-        <div class="flex flex-col items-center">
-          <div class="rounded-full bg-gray-100 group-hover:bg-secondary p-4 transition">
-            <img :src="fixture.fixture.away_logo" :alt="fixture.fixture.away"
-              class="w-28 h-28 object-contain p-2 rounded-full shadow-md shadow-black/90" />
+          <div class="flex flex-col items-center">
+            <div class="rounded-full bg-gray-100 group-hover:bg-secondary p-4 transition">
+              <img :src="fixture.fixture.away_logo" :alt="fixture.fixture.away"
+                class="w-28 h-28 object-contain p-2 rounded-full shadow-md shadow-black/90" />
+            </div>
+            <span class="text-xl font-bold">{{ fixture.fixture.away }}</span>
           </div>
-          <span class="text-xl font-bold">{{ fixture.fixture.away }}</span>
         </div>
-      </div>
-      <!-- EVENTSN -->
-      <div class="relative clearfix">
-        <template v-for="event in fixture.data.events">
-          <MatchEvent :event="event" :side="determineSide(event)" />
-        </template>
-      </div>
-      <!-- END EVENTS -->
+        <!-- EVENTSN -->
+        <div class="relative clearfix">
+          <template v-for="event in fixture.data.events">
+            <MatchEvent :event="event" :side="determineSide(event)" />
+          </template>
+        </div>
+        <!-- END EVENTS -->
       </div>
       <!-- TABS -->
 
-      <div class="w-full px-4 mt-8 sm:px-0">
+      <div class="w-full px-4 -mt-2 sm:px-0">
         <TabGroup>
-          <TabList class="flex space-x-1 rounded-xl bg-primary/80 p-1">
+          <TabList class="flex space-x-1 rounded-xl bg-primary/80 p-2">
             <Tab v-for="category in Object.keys(categories)" as="template" :key="category" v-slot="{ selected }">
               <button :class="[
                 'w-full rounded-lg py-2.5 text-sm font-medium leading-5 text-blue-700',
@@ -117,13 +128,22 @@
 </template>
 <script setup>
 import { TagIcon, BellAlertIcon, MapPinIcon, ClockIcon } from '@heroicons/vue/24/outline'
-import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue'
+import { TabGroup, TabList, Tab, TabPanels, TabPanel, Switch } from '@headlessui/vue'
 
 import { DateTime as dt } from 'luxon'
 const fixture_id = useRoute().params.slug.split("-")[0]
 const { data: fixture, pending } = await useApi('fixtures/' + fixture_id)
 const determineSide = e => e.team.name == fixture.value.data.teams.home.name ? 'home' : 'away'
-
+const enabled = ref(false)
+const header = useState('header')
+header.value.disposition = 'match'
+header.value.meta = {
+  home: fixture.value.fixture.home_logo,
+  home_score: fixture.value.data.goals.home,
+  away: fixture.value.fixture.away_logo,
+  away_score: fixture.value.data.goals.away,
+  status: fixture.value.data.fixture.status.short
+}
 
 const categories = ref({
   Recent: [
@@ -181,10 +201,11 @@ const categories = ref({
   background-image: url("@/assets/bg-banner.jpg");
   background-position: center center
 }
+
 .clearfix:after {
   content: " ";
-   display: block; 
-   height: 0; 
-   clear: both;
+  display: block;
+  height: 0;
+  clear: both;
 }
 </style>
