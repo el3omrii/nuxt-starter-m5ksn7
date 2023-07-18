@@ -1,7 +1,7 @@
 <template>
   <!-- Grid -->
   <div class="flex justify-between items-center py-4 mb-4 border-y border-gray-300">
-    <span class="inline-flex items-center text-xl text-secondary font-bold"><TagIcon class="w-5 h-5 ml-2" />أخبار عالمية
+    <span class="inline-flex items-center text-xl text-secondary font-bold"><TagIcon class="w-5 h-5 ml-2" />{{ posts[0].category.name }}
       <NuxtLink to="category/كرة-عالمية" 
                 class="flex items-center px-4 py-2 bg-primary/90 text-white shadow-md rounded-md font-normal text-sm mr-4">
                 المزيد
@@ -20,7 +20,7 @@
         </div>
 
         <div class="grow mt-4 sm:mt-0 sm:mr-6 px-4 sm:px-0">
-          <h3 class="text-md font-semibold text-gray-800 group-hover:text-gray-600 dark:text-gray-300 dark:group-hover:text-white">
+          <h3 class="text-md font-semibold text-gray-800 group-hover:text-gray-600">
             {{ post.title }}
           </h3>
           <p class="mt-3 text-gray-600 dark:text-gray-400 text-sm text-justify">

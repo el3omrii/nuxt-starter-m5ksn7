@@ -1,6 +1,14 @@
 <template>
     <nuxt-layout name="withsidebar">
       <template #content>
+        <div class="fixed flex items-center justify-center w-full h-16 top-0 bg-white/90 shadow-md transition duration-300"
+             :class="[!sticky ? '-translate-y-full' : 'translate-y-0']"
+      >
+        <div class="rounded-full bg-primary py-2 px-4 ml-8 text-white whitespace-nowrap">
+          <NuxtLink :to="`/category/${article.category.slug}`" >{{ article.category.name }}</NuxtLink>
+        </div>
+        <h2 class="text-secondary text-xl">{{ article.title }}</h2>
+      </div>  
         <div class="flex flex-col md:flex-row">
           <SharingWidget @fontChanged="size => fontSize = size"/>
           <article v-if="article" class="w-full md:mr-2">
@@ -23,16 +31,14 @@
                 التعليقات<svg class="w-6 h-6 mr-2" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 13V5a2 2 0 00-2-2H4a2 2 0 00-2 2v8a2 2 0 002 2h3l3 3 3-3h3a2 2 0 002-2zM5 7a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1zm1 3a1 1 0 100 2h3a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
               </a>
             </div>
+            <BreadCrumb :category="article.category" :title="article.title" />
             <img class="w-full h-auto shadow-lg shadow-black rounded-lg" :alt="article.title" :src="article.image" />
-            <div v-html="article.content" class="mt-4 text-justify" :class="fontSize">
+            <div class="mt-4 text-justify" :class="fontSize">
+              <VueRenderer :html="article.content" />
             </div>
           </article>
           </div>
-          <div class="flex gap-x-4 py-2 mt-8 border-y">
-            <span class="rounded-full p-2 bg-primary text-white"><HashtagIcon class="inline w-5 h-5 pl-1 ml-1 border-l" />رياضة عالمية</span>
-            <span class="rounded-full p-2 bg-primary text-white">الدوري الاسباني</span>
-            <span class="rounded-full p-2 bg-primary text-white">Tag 1</span>
-          </div>
+          <ArticleTags :category="article.category" :tags="article.tags" />
           <SectionHead>مقالات ذات صلة</SectionHead>
           <RelatedArticles :articles="{data: article.related, category:article.category}" />
       </template>
@@ -45,6 +51,7 @@
 <script setup>
 import { HashtagIcon } from '@heroicons/vue/24/outline'
 const route = useRoute()
+
 const {data: article} = await useApi('post/' + route.params.slug)
 useSeoMeta({
   title: article.value.title,
@@ -54,11 +61,33 @@ useSeoMeta({
   ogImage: article.value.image,
   twitterCard: 'summary_large_image',
 })
-const header = useState('header')
-header.value.disposition = 'article'
-header.value.meta = {
-  title: article.value.title,
-  category: article.value.category.name
-}
+
 const fontSize = ref('text-lg')
+const sticky = ref(false)
+
+onMounted(() => {
+  convertOEmbed(article.value.content)
+  article.value.tags.forEach(tag => {
+    article.value.content = article.value.content.replace(new RegExp(tag.name, 'g'), `<NuxtLink to="/tag/${tag.slug}">${tag.name}</NuxtLink>`)
+  })
+  window.addEventListener('scroll', () => {
+    sticky.value = window.scrollY > 200 ? true: false
+  })
+})
+
+const getYouTubeID = (url) => {
+  url = url.split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/u)
+  /* eslint-disable no-useless-escape */
+  return (url[2] !== undefined) ? url[2].split(/[^0-9a-z_\-]/iu)[0] : url[0]
+}
+const convertOEmbed = (content) => {
+  var parsedHtml = new DOMParser().parseFromString(content, 'text/html')
+  parsedHtml.querySelectorAll('.media').forEach((media) => {
+    var url = getYouTubeID(/oembed\surl=\"(.*)\"/gm.exec(media.innerHTML)[1])
+    media.innerHTML = '<div class="w-full h-auto">' +
+        '<iframe src="https://www.youtube.com/embed/'+url+'?rel=0" class="w-full aspect-video" allowfullscreen scrolling="no" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share;"></iframe>' +
+      '</div>'
+  })
+  article.value.content = String(parsedHtml.body.innerHTML)
+}
 </script>

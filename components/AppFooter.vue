@@ -9,24 +9,23 @@
       <!-- End Col -->
 
       <div class="col-span-1">
-        <h4 class="font-semibold text-gray-100">Product</h4>
+        <h4 class="font-semibold text-gray-100">فئات</h4>
 
         <div class="mt-3 grid space-y-3">
-          <p><a class="inline-flex gap-x-2 text-gray-400 hover:text-gray-200" href="#">Pricing</a></p>
-          <p><a class="inline-flex gap-x-2 text-gray-400 hover:text-gray-200" href="#">Changelog</a></p>
-          <p><a class="inline-flex gap-x-2 text-gray-400 hover:text-gray-200" href="#">Docs</a></p>
+          <p><NuxtLink class="inline-flex gap-x-2 text-gray-400 hover:text-gray-200" to="/category/كرة-عالمية">كرة عالمية</NuxtLink></p>
+          <p><NuxtLink class="inline-flex gap-x-2 text-gray-400 hover:text-gray-200" to="/category/كرة-عربية">كرة عربية</NuxtLink></p>
+          <p><NuxtLink class="inline-flex gap-x-2 text-gray-400 hover:text-gray-200" to="/category/كرة-عالمية">مباريات</NuxtLink></p>
         </div>
       </div>
       <!-- End Col -->
 
       <div class="col-span-1">
-        <h4 class="font-semibold text-gray-100">Company</h4>
+        <h4 class="font-semibold text-gray-100">وسومات</h4>
 
-        <div class="mt-3 grid space-y-3">
-          <p><a class="inline-flex gap-x-2 text-gray-400 hover:text-gray-200" href="#">About us</a></p>
-          <p><a class="inline-flex gap-x-2 text-gray-400 hover:text-gray-200" href="#">Blog</a></p>
-          <p><a class="inline-flex gap-x-2 text-gray-400 hover:text-gray-200" href="#">Careers</a> <span class="inline ml-1 text-xs bg-blue-700 text-white py-1 px-2 rounded-md">We're hiring</span></p>
-          <p><a class="inline-flex gap-x-2 text-gray-400 hover:text-gray-200" href="#">Customers</a></p>
+        <div class="mt-3 grid grid-cols-2 items-center">
+          <template v-for="tag in tags" :key="tag.id">
+            <NuxtLink class="inline-flex mt-2 gap-x-2 text-gray-400 hover:text-gray-200 text-sm" :to="`/tag/${tag.slug}`"># {{ tag.name }}</NuxtLink>
+          </template>
         </div>
       </div>
       <!-- End Col -->
@@ -55,7 +54,7 @@
 
     <div class="mt-5 sm:mt-12 grid gap-y-2 sm:gap-y-0 sm:flex sm:justify-between sm:items-center">
       <div class="flex justify-between items-center">
-        <p class="text-sm text-gray-400">© 2022 Preline. All rights reserved.</p>
+        <p class="text-sm text-gray-400">كوورة نت 2023 <span class="text-xl mr-1">©</span></p>
       </div>
       <!-- End Col -->
 
@@ -92,3 +91,6 @@
   </div>
 </footer>
 </template>
+<script setup>
+const {data: tags} = await useApi('popular_tags')
+</script>
