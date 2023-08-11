@@ -1,8 +1,8 @@
 <template>
     <div class="pitch responsive" :style="pitchStyle()">
-        <p v-if="lineuptest.error" class="text-3xl text-gray-300 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">التشكيلة غير متاحة حاليا</p>
-        <div v-else class="teams">
-            <Team v-for="(team, index) in lineuptest.data"
+        <p v-if="lineup.error" class="text-3xl text-gray-300 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">التشكيلة غير متاحة حاليا</p>
+        <div v-else class="flex absolute h-full w-full">
+            <Team v-for="(team, index) in lineup.data"
                 :players="team.startXI"
                 :formation="team.formation"
                 :colors="team.team.colors"

@@ -8,10 +8,10 @@
           d="M 304.969343 4.030258 L 4.984177 351.004464 L 218.992286 495.969742 L 308.022152 393.973214 L 308.022152 995.969742 L 952.974684 995.969742 L 952.974684 393.973214 L 1041.007714 495.969742 L 1255.015823 351.004464 L 956.027492 4.030258 L 849.989122 4.030258 C 811.11254 91.269841 725.509296 148.499504 630 150.979663 C 534.989122 150.979663 452.999407 92.013889 410.010878 4.030258 Z M 304.969343 4.030258" transform="matrix(0.0396825,0,0,0.04,0,0)"/>
         </g>
       </svg>
-      <div class="number text-xs md:text-sm" :style="{ color: '#' + colors.number }">
+      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-bold text-xs md:text-sm" :style="{ color: '#' + colors.number }">
         {{ player.number }}
       </div>
-      <div class="hidden md:block name absolute rounded-md bg-amber-950 text-white text-sm px-4">{{ player.name.split(' ').pop() }}</div>
+      <div class="hidden md:block absolute -bottom-1/3 w-max rounded-md bg-amber-950 text-white text-sm px-4">{{ player.name.split(' ').pop() }}</div>
     </div>
 </template>
 <script setup>

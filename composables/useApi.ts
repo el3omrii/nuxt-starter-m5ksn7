@@ -1,4 +1,9 @@
-export const useApi = async (path:string) => {
+export const useApi = async (path:string, options?:object) => {
     const config = useRuntimeConfig();
-    return await useFetch(() => `${config.public.API_URL}/${path}`, {key: path})
+    //ts-ignore
+    options ? options.key = path : options = {key: path}
+    return await useFetch(
+        () => `${config.public.API_URL}/${path}`, 
+        options,
+        )
 }

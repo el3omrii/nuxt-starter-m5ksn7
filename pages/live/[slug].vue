@@ -75,7 +75,7 @@
         </div>
         <!-- END EVENTS -->
       </div>
-      <!-- STICKY HEADER -->
+      <!-- STICKY HEADER >
       <div class="stickyheader flex items-center justify-center w-full h-16 top-0 bg-white/90 shadow-md"
       >
         <div class="w-full mx-20 flex justify-between iitems-center">
@@ -93,11 +93,11 @@
         </div>
         
       </div>  
-      <!-- END STICKY -->
+      <-- END STICKY -->
       <!-- TABS -->
       <div class="w-full px-4 sm:px-0">
         <TabGroup>
-          <TabList class="flex sticky top-16 space-x-1 rounded-b-xl bg-primary/80 p-2">
+          <TabList class="flex sticky top-16 space-x-1 rounded-b-xl bg-primary/90 p-2 z-10">
             <Tab v-for="tab in tabs" as="template" :key="tab" v-slot="{ selected }">
               <button :class="[
                 tab.class,
@@ -115,7 +115,7 @@
               'rounded-xl bg-white p-3',
               'ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2',
             ]">
-              Video should be here !
+                <VideoPlayer :options="videoOptions" url="http://live.kooranet.com/hls/mbc_4.m3u8" />
             </TabPanel>
             <TabPanel :class="[
               'rounded-xl bg-white p-3',
@@ -128,17 +128,23 @@
       </div>
       <!-- END TABS -->
     </template>
+    <template #sidebar>
+      <LazyClientOnly>
+        <ChatWidget />
+      </LazyClientOnly>
+    </template>
   </nuxt-layout>
 </template>
 <script setup>
 import { TagIcon, BellAlertIcon, MapPinIcon, ClockIcon } from '@heroicons/vue/24/outline'
 import { TabGroup, TabList, Tab, TabPanels, TabPanel, Switch } from '@headlessui/vue'
+
 import { DateTime as dt } from 'luxon'
 const fixture_id = useRoute().params.slug.split("-")[0]
 const { data: fixture, pending } = await useApi('fixtures/' + fixture_id)
 const determineSide = e => e.team.name == fixture.value.data.teams.home.name ? 'home' : 'away'
 const enabled = ref(false)
-onMounted(() => {
+/*onMounted(() => {
   let sticky = document.getElementsByClassName('stickyheader')[0]
   console.log(sticky)
   let offset = sticky.offsetTop - 35
@@ -152,12 +158,19 @@ onMounted(() => {
       sticky.classList.remove('sticky')
     }
   })
-})
+})*/
 const tabs = ref([
   { name: 'الرئيسية', class: 'w-full rounded-lg py-2.5 text-sm font-medium leading-5 text-blue-700 ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2' },
   { name: 'التشكيلة', class: 'w-full rounded-lg py-2.5 text-sm font-medium leading-5 text-blue-700 ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2' },
   { name: 'إحصائيات', class: 'w-full rounded-lg py-2.5 text-sm font-medium leading-5 text-blue-700 ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2' }
   ])
+
+  const videoOptions = ref({
+        home: fixture.value.fixture.home,
+        home_logo: fixture.value.fixture.home_logo,
+        away: fixture.value.fixture.away,
+        away_logo: fixture.value.fixture.away_logo
+      })
 </script>
 <style scoped>
 .page-title::before {
