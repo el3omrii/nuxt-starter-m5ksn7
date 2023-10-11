@@ -4,10 +4,10 @@
         <div class="fixed flex items-center justify-center w-full h-16 top-0 bg-white/90 shadow-md transition duration-300"
              :class="[!sticky ? '-translate-y-full' : 'translate-y-0']"
       >
-        <div class="rounded-full bg-primary py-2 px-4 ml-8 text-white whitespace-nowrap">
+        <div class="rounded-full bg-primary sm:w-auto sm:py-2 sm:px-4 px-2 py-1 sm:ml-8 ml-2 sm:text-base text-sm text-white whitespace-nowrap">
           <NuxtLink :to="`/category/${article.category.slug}`" >{{ article.category.name }}</NuxtLink>
         </div>
-        <h2 class="text-secondary text-xl">{{ article.title }}</h2>
+        <h2 class="text-secondary sm:text-xl text-lg">{{ article.title }}</h2>
       </div>  
         <div class="flex flex-col md:flex-row">
           <SharingWidget @fontChanged="size => fontSize = size"/>
@@ -16,13 +16,13 @@
             <div class="flex justify-between items-center py-4 mb-4 border-y">
               <div class="flex items-center gap-x-2">
                 <img :src="article.source.logo" class="w-24 h-auto" alt="source" />
-                <div class="flex flex-col gap-y-2 text-gray-500">
+                <div class="flex flex-col gap-y-2 text-gray-500 sm:text-base text-sm">
                   <div>
-                    <span class="font-bold ml-2">المصدر:</span>
+                    <span class="font-bold sm:ml-2 ml-1">المصدر:</span>
                     <span>{{ article.source.name }}</span>
                   </div>
                   <div>                
-                    <span class="font-bold ml-2">التاريخ:</span>
+                    <span class="font-bold sm:ml-2 ml-1">التاريخ:</span>
                     <span>{{ article.date }}</span>
                   </div>
                 </div>
@@ -32,8 +32,8 @@
               </a>
             </div>
             <BreadCrumb :category="article.category" :title="article.title" />
-            <img class="w-full h-auto shadow-lg shadow-black rounded-lg" :alt="article.title" :src="article.image" />
-            <div class="mt-4 text-justify" :class="fontSize">
+            <img class="w-full h-auto mt-2 shadow-lg shadow-black rounded-lg" :alt="article.title" :src="article.image" />
+            <div class="mt-8 text-justify" :class="fontSize">
               <VueRenderer :html="article.content" />
             </div>
           </article>
@@ -56,8 +56,8 @@ const {data: article} = await useApi('post/' + route.params.slug)
 useSeoMeta({
   title: article.value.title,
   ogTitle: article.value.title,
-  description: article.value.description,
-  ogDescription: article.value.description,
+  description: article.value.excerpt,
+  ogDescription: article.value.excerpt,
   ogImage: article.value.image,
   twitterCard: 'summary_large_image',
 })
@@ -91,3 +91,28 @@ const convertOEmbed = (content) => {
   article.value.content = String(parsedHtml.body.innerHTML)
 }
 </script>
+<style>
+blockquote::before {
+  content: open-quote;
+}
+
+blockquote::after {
+  content: close-quote;
+}
+
+blockquote::before, blockquote::after {
+  opacity: 0.25;
+  padding: 0 10px;
+  font-size: 3em;
+}
+
+blockquote {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px;
+  padding: 20px 10px;
+  border-radius: 10px;
+  background-color: #e5ddcb;
+}
+</style>

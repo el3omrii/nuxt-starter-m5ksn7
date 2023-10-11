@@ -1,13 +1,16 @@
 <template>
   <!-- Grid -->
   <div class="flex justify-between items-center py-4 mb-4 border-y border-gray-300">
-    <span class="inline-flex items-center text-xl text-secondary font-bold"><TagIcon class="w-5 h-5 ml-2" />{{ posts[0].category.name }}
+    <h2 class="inline-flex items-center text-xl text-secondary font-bold"><TagIcon class="w-5 h-5 ml-2" />{{ category_name }}
       <NuxtLink to="category/كرة-عالمية" 
                 class="flex items-center px-4 py-2 bg-primary/90 text-white shadow-md rounded-md font-normal text-sm mr-4">
                 المزيد
-                <ArrowLongLeftIcon class="text-white w-5 h-5 mr-2" />
+                <button aria-label="المزيد">
+                  <span class="sr-only">المزيد</span>
+                  <ArrowLongLeftIcon class="text-white w-5 h-5 mr-2" />
+                </button>
       </NuxtLink>
-    </span>
+    </h2>
       <CategorySort @selected="sortCategory"/>
   </div>
   <div class="mt-4 grid lg:grid-cols-2 gap-8">
@@ -16,7 +19,7 @@
     <NuxtLink :to="`/${post.category.slug}/${post.slug}`">
       <div class="flex items-center">
         <div class="flex-shrink-0 relative rounded-xl overflow-hidden w-20 h-24 lg:w-56 lg:h-52 md:w-40 md:h-40">
-          <img class="group-hover:scale-110 transition-transform duration-500 ease-in-out w-full h-full absolute top-0 left-0 object-cover rounded-xl shadow-lg shadow-black" :src="post.image" alt="Image Description">
+          <img class="group-hover:scale-110 transition-transform duration-500 ease-in-out w-full h-full absolute top-0 left-0 object-cover rounded-xl shadow-lg shadow-black" :src="post.image.replace('.webp', '-medium.webp')" :alt="post.title">
         </div>
 
         <div class="grow mt-4 sm:mt-0 sm:mr-6 px-4 sm:px-0">
@@ -44,7 +47,7 @@
 import { TagIcon, ArrowLongLeftIcon } from '@heroicons/vue/24/outline'
 const sort = ref('created_at')
 const {data: posts, refresh} = await useApi(`posts/latest?category=${props.category}&orderBy=${sort.value}&limit=6`)
-const props = defineProps({category: Number})
+const props = defineProps({category: Number, category_name: String})
 const sortCategory = (data) => {
   sort.value = data
   refresh()

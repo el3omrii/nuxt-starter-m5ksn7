@@ -1,8 +1,8 @@
 <template>
 <nav class="flex text-gray-800 py-3 rounded-lg" aria-label="Breadcrumb">
-  <ol class="inline-flex items-center space-x-1 md:space-x-3">
+  <ol class="inline-flex items-center space-x-1 md:space-x-3 sm:text-sm text-xs">
     <li class="inline-flex items-center">
-      <NuxtLink to="/" class="text-sm hover:text-black inline-flex items-center">
+      <NuxtLink to="/" class="hover:text-black inline-flex items-center">
         <HomeIcon class="w-4 h-4 ml-1 md:ml-2" />
         الرئيسية
       </NuxtLink>
@@ -10,13 +10,13 @@
     <li v-for="link in links" :key="link">
       <div v-if="link.slug" class="flex items-center">
         <ChevronLeftIcon class="w-4 h-4" />
-        <NuxtLink :to="`/category/${link.slug}`" class="hover:text-black mr-1 md:mr-2 text-sm font-medium">{{ link.text }}</NuxtLink>
+        <NuxtLink :to="`/category/${link.slug}`" class="hover:text-black mr-1 md:mr-2 font-medium whitespace-nowrap">{{ link.text }}</NuxtLink>
       </div>
     </li>
     <li aria-current="page">
       <div class="flex items-center">
         <ChevronLeftIcon class="w-4 h-4" />
-        <span class="text-gray-400 mr-1 md:mr-2 text-sm font-medium">{{ title }}</span>
+        <span class="text-gray-400 mr-1 md:mr-2 font-medium">{{ title }}</span>
       </div>
     </li>
   </ol>

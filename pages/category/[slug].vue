@@ -3,7 +3,7 @@
         <template #header>
             <div class="page-title relative w-full flex flex-col justify-center items-center p-8 bg-secondary before:absolute before:inset-0 before:w-full before:h-full">
                 <h1 class="text-2xl text-primary font-bold border-b border-primary">{{ posts.category.name }}</h1>
-                <p class="mt-2 text-white text-lg">آخر اخبار العالم زالموضة{{posts.category.description}}</p>
+                <p class="mt-2 text-white text-center">{{posts.category.description}}</p>
             </div>
         </template>
         <template #content>

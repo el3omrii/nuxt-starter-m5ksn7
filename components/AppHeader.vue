@@ -65,7 +65,7 @@
     <!-- End Topbar -->
 
     <nav
-      class="w-full px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8 bg-primary shadow-md shadow-black/50"
+      class="w-full px-4 md:flex md:items-center md:justify-between sm:px-6 lg:px-8 bg-primary shadow-md shadow-black/50"
       aria-label="Global">
       <div class="flex max-w-7xl items-center justify-between">
         <NuxtLink to="/">
@@ -225,8 +225,8 @@
           </li>
           <li>
             <NuxtLink
-              to="/matches"
-              class="menu-link"
+            to="/today-matches-live"
+            class="menu-link"
               active-class="border-b-2 border-white"
               aria-current="page"
               >مباريات اليوم
@@ -240,17 +240,54 @@
       class="md:hidden fixed top-0 right-0 transition-all duration-300 transform h-full max-w-xs w-full z-[60] bg-primary border-r dark:bg-gray-800 dark:border-gray-700"
       :class="[!isOpen ? 'translate-x-full' : 'translate-x-0']"
       ref="mobileNav">
-      <div class="p-4">
-        <p class="text-gray-800 dark:text-gray-400">
-          Some text as placeholder. In real life you can have the elements you
-          have chosen. Like, text, images, lists, etc.
-        </p>
+      <div class="p-4 h-full">
+        <div class="overflow-auto transition-all duration-300 basis-full grow">
+        <ul
+          class="flex-col items-center sm:gap-y-4 text-white font-bold p-2">
+          <li class="pb-4">
+            <NuxtLink
+              to="/"
+              class="text-lg p-4 pb-2"
+              active-class="border-b-2 border-white"
+              aria-current="page"
+              >الرئيسية
+            </NuxtLink>
+          </li>
+          <li>
+            <MegaMenuMobile />
+          </li>
+          <li class="pb-4">
+            <NuxtLink
+              to="/category/كرة-عربية"
+              class="text-lg p-4 pb-2"
+              active-class="border-b-2 border-white"
+              aria-current="page"
+              >كرة عربية
+            </NuxtLink>
+          </li>
+          <li class="pb-4">
+            <NuxtLink
+              to="/today-matches-live"
+              class="text-lg p-4 pb-2"
+              active-class="border-b-2 border-white"
+              aria-current="page"
+              >مباريات اليوم
+            </NuxtLink>
+          </li>
+        </ul>
+      </div>
       </div>
     </div>
   </header>
 </template>
 <script setup>
-const isOpen = useState("isOpen", () => false);
-const toggleNav = () => (isOpen.value = !isOpen.value);
-const mobileNav = ref();
+const isOpen = useState("isOpen", () => false)
+const toggleNav = () => (isOpen.value = !isOpen.value)
+const mobileNav = ref()
+const router = useRouter()
+
+router.beforeEach((from,to,next) => {
+    isOpen.value = false
+    next()
+})
 </script>

@@ -10,9 +10,9 @@
       <HomeMasonry />
       <!-- End Masonry layput -->
       <!-- Home section 1 -->
-      <HomeSection :category=1 />
-      <div class="w-full flex justify-center my-2"><img src="https://images.placeholders.dev/?width=728&height=90&text=Ads%20placeholder&bgColor=%23f7f6f6&textColor=%236d6e71" /></div>
-      <HomeSection :category=2 />
+      <HomeSection :category=1 category_name="كرة عالمية" />
+      <div class="w-full flex justify-center my-2"><img src="https://images.placeholders.dev/?width=728&height=90&text=Ads%20placeholder&bgColor=%23f7f6f6&textColor=%236d6e71" alt="ads and announcements" width="728" height="90" /></div>
+      <HomeSection :category=6 category_name="كرة عربية" />
       <!-- End Home Section -->
     </template>
     <template #sidebar>

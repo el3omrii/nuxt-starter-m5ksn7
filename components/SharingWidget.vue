@@ -2,14 +2,18 @@
     <aside class="hidden md:block relative mr-auto">
             <div class="sticky top-16 rounded-md border border-gray-300 bg-gray-100 p-2">
                 <button class="block p-2 mb-2 rounded-md hover:bg-gray-200" v-tooltip.arrow="'غرد على تويتر'">
-                  <svg class="w-5 h-5" aria-hidden="true" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <a :href="twUrl" target="_blank">
+                    <svg class="w-5 h-5" aria-hidden="true" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M5.03168 15.0005C11.0694 15.0005 14.3718 9.99823 14.3718 5.66031C14.3718 5.51823 14.3718 5.37679 14.3622 5.23599C15.0047 4.77129 15.5593 4.19591 16 3.53679C15.4009 3.80239 14.7654 3.97649 14.1146 4.05327C14.7999 3.64306 15.3128 2.99779 15.5578 2.23759C14.9134 2.61999 14.2084 2.88947 13.4733 3.03439C12.9783 2.5081 12.3237 2.15961 11.6108 2.04284C10.8978 1.92607 10.1663 2.04753 9.52931 2.38842C8.89234 2.72931 8.38548 3.27064 8.08716 3.92862C7.78884 4.5866 7.71569 5.32456 7.87904 6.02831C6.57393 5.96284 5.29717 5.62366 4.13164 5.03279C2.9661 4.44192 1.93784 3.61256 1.1136 2.59855C0.693819 3.32121 0.565248 4.1767 0.754066 4.99083C0.942885 5.80496 1.43489 6.51652 2.12992 6.98063C1.60749 6.96532 1.09643 6.82438 0.64 6.56975V6.61135C0.640207 7.36925 0.902567 8.10374 1.38258 8.69026C1.86259 9.27677 2.53071 9.67919 3.2736 9.82927C2.79032 9.96109 2.28325 9.98036 1.79136 9.88559C2.00121 10.5378 2.40962 11.1081 2.95949 11.5169C3.50937 11.9256 4.17322 12.1523 4.85824 12.1653C4.17763 12.7003 3.39821 13.0958 2.56458 13.3293C1.73096 13.5627 0.859476 13.6296 0 13.5259C1.50122 14.4893 3.24795 15.0002 5.03168 14.9979" fill="#1DA1F2"></path>
                   </svg>
+                  </a>
                 </button>
                 <button class="block p-2 mb-2 rounded-md hover:bg-gray-200" v-tooltip.arrow="'شارك على فايسبوك'">
-                  <svg class="w-5 h-5" aria-hidden="true" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <a :href="fbUrl" target="_blank">
+                    <svg class="w-5 h-5" aria-hidden="true" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g><path d="M16 8.4436C16 4.02532 12.4183 0.443604 8 0.443604C3.58172 0.443604 0 4.02532 0 8.4436C0 12.4366 2.92547 15.7463 6.75 16.3464V10.7561H4.71875V8.4436H6.75V6.6811C6.75 4.6761 7.94438 3.5686 9.77172 3.5686C10.6467 3.5686 11.5625 3.72485 11.5625 3.72485V5.6936H10.5538C9.56 5.6936 9.25 6.31032 9.25 6.9436V8.4436H11.4688L11.1141 10.7561H9.25V16.3464C13.0745 15.7463 16 12.4366 16 8.4436Z" fill="#1877F2"></path><path d="M11.1141 10.7561L11.4688 8.4436H9.25V6.9436C9.25 6.31095 9.56 5.6936 10.5538 5.6936H11.5625V3.72485C11.5625 3.72485 10.647 3.5686 9.77172 3.5686C7.94438 3.5686 6.75 4.6761 6.75 6.6811V8.4436H4.71875V10.7561H6.75V16.3464C7.5783 16.476 8.4217 16.476 9.25 16.3464V10.7561H11.1141Z" fill="white"></path></g><defs><clipPath id="clip0_13664_80011"><rect width="16" height="16" fill="white" transform="translate(0 0.443604)"></rect></clipPath></defs>
                   </svg>
+                  </a>
                 </button>
                 <button class="block p-2 mb-2 rounded-md hover:bg-gray-200" v-tooltip.arrow="'انشر على لينكد'">
                   <svg class="w-5 h-5" aria-hidden="true" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -41,6 +45,9 @@
 </template>
 <script setup>
 import { ChevronUpIcon, ChevronDownIcon, LanguageIcon } from '@heroicons/vue/24/outline'
+
+const config = useRuntimeConfig()
+const route = useRoute()
 const emit = defineEmits(['fontChanged'])
 const fontSizes = ['text-sm', 'text-base', 'text-lg', 'text-xl', 'text-2xl']
 const size = ref('text-lg')
@@ -62,4 +69,7 @@ const decreaseSize = () => {
   else
     return
 }
+// social icons
+const fbUrl = `https://www.facebook.com/sharer/sharer.php?u=${config.public.BASE_URL}${route.fullPath}`
+const twUrl = `http://www.twitter.com/share?url=${config.public.BASE_URL}${route.fullPath}`
 </script>

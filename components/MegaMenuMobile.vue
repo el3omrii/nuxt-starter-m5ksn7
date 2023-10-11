@@ -1,9 +1,10 @@
 <template>
-  <div @mouseover="showMenu" @mouseleave="hideMenu" class="group">
+  <div class="group mobilemenu">
     <div class="flex items-center">
       <NuxtLink to="/category/كرة-عالمية" class="menu-link" active-class="border-b-2 border-white">كرة عالمية</NuxtLink>
-      <svg
-        class="h-5 w-5 flex-none text-white transition group-hover:rotate-180"
+      <svg @click="toggleMenu"
+        class="h-5 w-5 flex-none text-white transition"
+        :class="{'rotate-180': isVisible}"
         viewBox="0 0 20 20"
         fill="currentColor"
         aria-hidden="true"
@@ -18,25 +19,28 @@
     <transition name="mega-menu">
     <div
       v-show="isVisible"
-      class="absolute md:right-0 lg:right-auto p-2 w-full max-w-3xl h-44 rounded-lg shadow-md bg-primary/90"
+      class="md:right-0 lg:right-auto p-2 w-full max-w-3xl h-44 rounded-lg shadow-md bg-primary/90"
     >
-      <ul class="flex gap-x-4 font-medium text-xs">
+      <ul class="flex-col gap-y-4 font-medium text-xs">
         <li>
-          <NuxtLink to="/category/دوري-أبطال-أوروبا/" class="block w-[100px] h-28 pt-28 mb-2 text-center transition hover:opacity-80 hover-text-customgray hover:scale-110 logo-soccer-7 spritesheet" active-class="text-secondary font-bold">
-            دوري أبطال أوروبا - تشامبيونزليج
+          <NuxtLink to="/category/دوري-أبطال-أوروبا/" class="flex items-center text-sm" active-class="text-secondary font-bold">
+            <span class="block w-12 h-14 ml-2 transition logo-soccer-7 spritesheet"></span>
+            دوري أبطال أوروبا <br> تشامبيونزليج
           </NuxtLink>
         </li>
         <li>
-          <NuxtLink to="/category/الدوري-الانجليزي-الممتاز/" class="block w-[100px] h-28 pt-28 mb-2 text-center transition hover:opacity-80 hover-text-customgray hover:scale-110 logo-soccer-6 spritesheet" active-class="text-secondary font-bold">
-            الدوري الإنجليزي الممتاز - بريمير ليغ
+          <NuxtLink to="/category/الدوري-الانجليزي-الممتاز/" class="flex items-center text-sm" active-class="text-secondary font-bold">
+            <span class="block w-12 h-14 ml-2 transition logo-soccer-6 spritesheet"></span>
+            الدوري الإنجليزي الممتاز <br> بريمير ليغ
           </NuxtLink>
         </li>
         <li>
-          <NuxtLink to="/category/الدوري-الإسباني/" class="block w-[100px] h-28 pt-28 mb-2 text-center transition hover:opacity-80 hover-text-customgray hover:scale-110 logo-soccer-19 spritesheet" active-class="text-secondary font-bold">
-            الدوري الإسباني الدرجة الأولى - الليجا
+          <NuxtLink to="/category/الدوري-الإسباني/" class="flex items-center text-sm" active-class="text-secondary font-bold">
+            <span class="block w-12 h-14 ml-2 transition logo-soccer-19 spritesheet"></span>
+            الدوري الإسباني الدرجة الأولى <br> الليجا
           </NuxtLink>
         </li>
-        <li class="block w-[100px] h-28 pt-28 mb-2 text-center transition hover:opacity-80 hover-text-customgray hover:scale-110 logo-soccer-8 spritesheet">
+        <!--li class="block w-[100px] h-28 pt-28 mb-2 text-center transition hover:opacity-80 hover-text-customgray hover:scale-110 logo-soccer-8 spritesheet">
           <a
             href="/الدوري-الأوروبي/"
             >الدوري الأوروبي - يوروبا ليج</a
@@ -53,7 +57,7 @@
             href="/الدوري-الإيطالي-الدرجة-الأولى/"
             >الدوري الإيطالي الدرجة الأولى - سيري آ</a
           >
-        </li>
+        </li-->
       </ul>
     </div>
     </transition>
@@ -61,23 +65,25 @@
 </template>
 <script setup>
 const isVisible = ref(false);
-const showMenu = () => (isVisible.value = true);
-const hideMenu = () => (isVisible.value = false);
+const showMenu = () => isVisible.value = true
+const hideMenu = () => isVisible.value = false
+const toggleMenu = () => isVisible.value = !isVisible.value
 </script>
 <style>
-.spritesheet {
+.mobilemenu .spritesheet {
     background-image: url('@/assets/spritesheet.png');
     background-repeat: no-repeat;
+    background-size: 333px;
 }
-.logo-soccer-6 {
-    background-position: -115px -335px;
-}
-
-.logo-soccer-7 {
-    background-position: -225px -335px
+.mobilemenu .logo-soccer-6 {
+    background-position: -60px -165px;
 }
 
-.logo-soccer-8 {
+.mobilemenu .logo-soccer-7 {
+    background-position: -112px -165px
+}
+
+.mobilemenu .logo-soccer-8 {
     background-position: -446px -335px;
 }
 
@@ -90,8 +96,8 @@ const hideMenu = () => (isVisible.value = false);
 .logo-soccer-14 {
     background-position: -5px -115px;
 }
-.logo-soccer-19 {
-    background-position: -5px -225px;
+.mobilemenu .logo-soccer-19 {
+    background-position: -2px -112px;
 }
 .mega-menu-enter-active, .mega-menu-leave-active{
     transition: all .2s ease-in-out;

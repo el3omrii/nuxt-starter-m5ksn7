@@ -12,6 +12,7 @@
     "@types/node": "^18",
     "autoprefixer": "^10.4.14",
     "nuxt": "^3.5.0",
+    "nuxt-gtag": "^0.6.1",
     "postcss": "^8.4.23",
     "tailwindcss": "^3.3.2"
   },
@@ -20,12 +21,21 @@
     "@dicebear/core": "^6.0.4",
     "@headlessui/vue": "^1.7.14",
     "@heroicons/vue": "^2.0.18",
+    "@nuxtjs/google-adsense": "^2.1.0",
+    "@peertube/p2p-media-loader-core": "^1.0.14",
+    "@peertube/p2p-media-loader-hlsjs": "^1.0.14",
+    "hls-video-element": "^0.5.1",
     "hls.js": "^1.4.10",
     "luxon": "^3.3.0",
-    "media-chrome": "^1.2.0",
+    "media-chrome": "^1.4.1",
+    "mux.js": "^6.3.0",
     "npm": "^9.8.1",
     "pusher-js": "^8.3.0",
     "sass": "^1.63.2",
+    "shaka-player": "^4.3.9",
+    "shaka-video-element": "^0.0.6",
+    "video.js": "^8.5.2",
+    "videojs-video-element": "^1.1.1",
     "vue3-carousel": "^0.3.1"
   }
 }
