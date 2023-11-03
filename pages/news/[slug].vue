@@ -24,6 +24,7 @@
               </a>
             </div>
             <img class="w-full h-auto shadow-lg shadow-black rounded-lg" :alt="article.title" :src="article.image" />
+            <Adsbygoogle />
             <div v-html="article.content" class="mt-4 text-justify lg:text-lg">
             </div>
           </article>

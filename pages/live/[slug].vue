@@ -124,7 +124,6 @@
       </div>  
       <!-- END STICKY -->
       <!-- TABS -->
-      <adsbygoogle />
       <div class="w-full">
         <TabGroup>
           <TabList class="flex sticky top-16 space-x-1 rounded-b-xl bg-primary/90 p-2 z-10">

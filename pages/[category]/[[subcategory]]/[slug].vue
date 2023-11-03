@@ -33,6 +33,7 @@
             </div>
             <BreadCrumb :category="article.category" :title="article.title" />
             <img class="w-full h-auto mt-2 shadow-lg shadow-black rounded-lg" :alt="article.title" :src="article.image" />
+            <Adsbygoogle />
             <div class="mt-8 text-justify" :class="fontSize">
               <VueRenderer :html="article.content" />
             </div>
